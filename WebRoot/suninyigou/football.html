@@ -1,0 +1,1216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>football.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+     $(function(){
+    	 $("#firstbox,#twobox,#fourbox,#fivebox,#eightbox").hover(function(){//实现网站导航  商家入驻  我的订单 我的易购   客户服务 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    		 $(this).children("a").children("img").attr("class","subdown");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    		 $(this).children("a").children("img").attr("class","blurdown");
+    	 });
+    	 $("#close").click(function(){//实现点击X号关闭显示内容
+    		 $(this).closest("div").hide();
+    	 });
+    	 $("#sixbox").hover(function(){//实现 购物车 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    		 $("#down5").attr("class","subdown");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    		 $("#down5").attr("class","blurdown");
+    	 });
+    	 $("#tenbox").hover(function(){//实现 手机苏宁 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    	 });
+    	  
+    	 $("#allshop").hover(function(){//实现 全部商品 下的内容显示与隐藏
+    		$(".mav_child").slideDown(200); 
+    	 },function(){
+    		$(".mav_child").slideUp(200);
+    	 });
+    	 
+     });
+    </script>
+    <style type="text/css">
+    *{ /*清除默认设置*/
+    border:0px;
+    margin:0px;
+    padding:0px;
+    }
+    #all{
+    width:100%;
+    height:100%;
+    min-width: 1300px;
+    }
+    /*---------------------第一部分导航内容开始------------------------*/
+    #header{/*控制头部整体内容*/
+    width: 100%;
+    height:35px;
+    min-width: 990px;
+    border-bottom: 1px solid #eee;
+    background-color: #f5f5f5;
+    color:#333;
+    font-size: 12px;
+    }
+    #header a{
+    color:#666;
+    }
+    #header_content{/*控制头部整体内容的宽度*/
+    width: 1190px;
+    height:100%;
+    font-family: arial, tahoma, 宋体;
+    position:relative;
+    }
+    #header_content1{/*控制头部左边内容整体的宽度*/
+    width:112px;
+    height:35px;
+    float: left;
+    }
+    #header_content a{/*控制头部整体a的样式*/
+    color:#666;
+    text-decoration: none;
+    }
+    #firstbox{/*控制头部第一个有下拉框内容的样式*/
+    display:inline-bolck;
+    width:85px;
+    line-height:35px;
+    float: left;
+    }
+    #twobox{
+    float: left;
+    width:85px;
+    line-height: 35px;
+    }
+    #return{
+    position:absolute;
+    top:7px;
+    left:0px;
+    }
+    #header_content1 i{
+    display:inline-bolck;
+    margin-left:10px;
+    margin-right:5px;
+    line-height: 35px;
+    font-style: normal;
+    }
+    
+    #down1{/*控制头部第一个有下拉框内容的向下箭头的样式*/
+    position:relative;
+    top:6px;
+    }
+    #firstbox span{
+    margin-left: 10px;
+    }
+    #twobox span{/*控制头部第二个有下拉框文字的样式*/
+    position:relative;
+    left:5px;
+    margin-left:-10px;
+    margin-right: 10px;
+    }
+    #down2{/*控制头部第二个有下拉框内容的向下箭头的样式*/
+    position:absolute;
+    left:260px;
+    top:8px;
+    }
+    #header_content2{/*控制头部右边内容整体的宽度*/
+    width:705px;
+    height:35px;
+    position:absolute;
+    left:480px;
+    }
+    #threebox,#fourbox,#fivebox,#sixbox,#sevenbox,#eightbox,#ninebox,#tenbox{/*控制头部右边内容整体的浮动*/
+    float:left;
+    }
+    #threebox b{/*注册有礼图标*/
+    display: inline-block;
+    width: 12px;
+    height: 13px;
+    background: url(image4/newbg.png) -19px 0;
+    position: relative;
+    top:1px;
+    }
+    #threebox a,#sevenbox a,#ninebox a{/*请登录 注册有礼 易付宝   企业采购*/
+    position: relative;
+    float: left;
+    padding: 0 10px;
+    overflow: hidden;
+    line-height: 35px;
+    height: 35px;
+    }
+    #fourbox a,#fivebox a,#eightbox a{/*我的订单   我的易购  客户服务*/
+    display: block;
+    position: relative;
+    padding: 0 5px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #fourbox img,#fivebox img,#eightbox img,#down5{
+    position: relative;
+    top:5px;
+    }
+    #sixbox a{/*购物车*/
+    display: block;
+    position: relative;
+    padding: 0 5px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #car{/*购物车图标*/
+    position: relative;
+    top:2px;
+    }
+    #tenbox a{/*手机苏宁*/
+    display: block;
+    position: relative;
+    padding: 0 10px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #tenbox img{/*手机苏宁图标*/
+    position: relative;
+    top:6px;
+    }
+    /*---------------------头部隐藏内容------------------------*/ 
+    #firstHidden{/*控制头部第一个隐藏内容*/
+    width: 988px;
+    padding: 20px 0;
+    left: 112px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: absolute;
+    top: 35px;
+    z-index: 1;
+    }
+    #firstHidden_1,#firstHidden_2,#firstHidden_3,#firstHidden_4,#firstHidden_5{/*控制头部隐藏内容浮动*/
+    float: left;
+    width: 176px;
+    border-right: 1px solid #eee;
+    padding-left: 20px;
+    text-align: left;
+    }
+    #firstHidden dt{/*控制头部隐藏内容的小标题*/
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+    line-height: 17px;
+    }
+    #firstHidden a,#secondHidden a,#thirdHidden a,#forthHidden a{
+    color:#666;
+    font-size: 12px;
+    }
+    #firstHidden p{
+    float: left;
+    height: 25px;
+    width: 78px;
+    line-height: 25px;
+    }
+    #close{/*控制头部隐藏内容的关闭符号*/
+    font-size: 22px;
+    color:#999;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right:10px;
+    }
+    #firstHidden i{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-image: url(image4/npbg.png);
+    background-position: 0 -205px;
+    margin-left:2px;
+    }
+    #secondHidden{/*控制头部第二个隐藏内容*/
+    width: 165px;
+    padding-top: 5px;
+    position: absolute;
+    top:35px;
+    left: 199px;
+    right: auto;
+    border:1px solid #ddd;
+    background: #fff;
+    z-index: 1;
+    }
+    #secondHidden p{
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding-left: px;
+    width: 71px;
+    display: block;
+    }
+    #thirdHidden{/*控制头部第三个隐藏内容*/
+    position: absolute;
+    left:139px;
+    top: 35px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 82px;
+    padding-bottom: 5px;
+    z-index: 1;
+    }
+    #thirdHidden p{
+    display: block;
+    width: 71px;
+    height: 30px;
+    line-height:30px;
+    padding-left: 10px;
+    float: left;
+    text-align: left;
+    }
+    #forthHidden{/*控制头部第四个隐藏内容*/
+    width:162px;
+    padding-bottom:5px;
+    position:absolute;
+    left: 223px;
+    top:35px;
+    border:1px solid #ddd;
+    background-color:#fff;
+    text-align: left;
+    z-index: 1;
+    }
+    #forthHidden_1{
+    float: left;
+    margin-right: 10px;
+    }
+    #pleaselogin{
+    display: block;
+    height: 28px;
+    width: 64px;
+    line-height: 28px;
+    float: none;
+    overflow: hidden;
+    }
+    #click1{
+    display: inline-block;
+    width: 60px;
+    height: 22px;
+    text-align: center;
+    background-color: #F60;
+    text-decoration: none;
+    border-radius: 4px;
+    }
+    #forthHidden_3{
+    clear:both;
+    }
+    #forthHidden_3 a{
+    display: block;
+    width: 71px;
+    height: 30px;
+    line-height: 30px;
+    padding-left:5px;
+    float: left;
+    }
+    #huiyuan{
+    padding:2px;
+    }
+    #fiveHidden{/*控制头部第五个隐藏内容*/
+    width: 280px;
+    height: 400px;
+    background: #fff;
+    overflow: hidden;
+    padding-bottom: 0;
+    position: absolute;
+    left: 307px;
+    top: 35px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    }
+    #icon{
+    background-image: url("image4/sidebar.png");
+    background-position: 0 -291px;
+    display:inline-block;
+    width:150px;
+    height:96px;
+    margin-top:120px;
+    }
+    h5{
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    color:#ddd;
+    font-weight:normal;
+    display:inline-block;
+    margin-top:10px;
+    }
+    #info1{
+    margin-top:20px;
+    line-height: 26px;
+    text-align: center;
+    }
+    #info1 span{
+    font-size: 12px;
+    color:#ddd;
+    }
+    #info1 a{
+    display:inline-block;
+    background-color: #F60;
+    color:#fff;
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    padding:0 20px;
+    border-radius:2px;
+    line-height: 26px;
+    }
+    
+    #sixHidden{/*控制头部第六个隐藏内容*/
+    width: 162px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    top: 35px;
+    left:381px;
+    border: 1px solid #ddd;
+    background: #fff;
+    z-index: 1;
+    }
+    #sixHidden p{
+    float: left;
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    }
+    #sixHidden a{
+    display: block;
+    padding-left:5px;
+    width: 71px;
+    }
+    #sixHidden img{
+    display: block;
+    position:absolute;
+    right:0px;
+    top:72px;
+    }
+    #sevenHidden{
+    position:absolute;
+    left:160px;
+    top:34px;
+    z-index: 1;
+    }
+    #sevenHidden img{
+    display: block;
+    width:540px;
+    height:220px;
+    margin-top:-5px;
+    border:1px solid #ddd;
+    }
+    /*-----------------------网页头部所有悬浮的样式-------------------------*/
+    #header_content1 i:HOVER,#twobox a:HOVER,#fourbox a:HOVER,#fivebox a:HOVER,#sevenbox a:HOVER,#ninebox a:HOVER,#tenbox a:HOVER{
+    color:#f60;
+    }
+    #secondHidden a:HOVER,#firstHidden a:HOVER,#threebox a:HOVER,#sixHidden a:HOVER{
+    color:#f60;
+    text-decoration: underline;
+    }
+    
+    
+    /*-----------------------网页头部所有失去焦点和获得焦点的样式-------------------------*/
+    .subBox1{
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    background-color: #fff;
+    }
+    .blurBox1{
+    border-left:1px solid #f5f5f5;
+    border-right:1px solid #f5f5f5;
+    }
+    .subdown{
+    transform: rotate(-180deg);
+    transition: all 0.2s ease 0s;
+    }
+    .blurdown{
+    transform: rotate(0deg);
+    transition: all 0.2s ease 0s;
+    }
+   /*---------------------第一部分导航内容结束------------------------*/ 
+   
+   /*---------------------第二部分内容开始------------------------*/
+   #logoContentall{/*控制第二部分整体内容*/
+   width:100%;
+   height:90px;
+   border-bottom: 1px solid #DDD;
+   min-width: 990px;
+   }
+   #logoContent{/*控制第二部分logo整体内容*/
+   width: 1190px;
+   height:90px;
+   position: relative;
+   }
+   #logo{/*--logo--*/
+   display:inline-block;
+   width: 190px;
+   height: 60px;
+   float: left;
+   overflow: hidden;
+   margin: 15px 20px 0 0;
+   padding-right: 20px;
+   border-right: 1px solid #EEE;
+   }
+   #logo img{
+   margin-top: -20px;
+   }
+   #storname{
+   max-width: 415px;
+   float: left;
+   margin-top: 18px;
+   }
+   #name{
+   color: #666;
+   font-size: 14px;
+   line-height: 20px;
+   font-weight:700;
+   font-family: arial, tahoma, 宋体;
+   text-decoration: none;
+   position: relative;
+   left:-42px;
+   }
+   #storname2{
+   padding-bottom: 19px;
+   position: relative;
+   margin-right: 25px;
+   margin-top:13px;
+   }
+   #storname2 a{
+   display:inline-block;
+   float: left;
+   text-decoration: none;
+   }
+   #storname2 span{
+   font-size:12px;
+   font-style:normal;
+   color: #333;
+   float: left;
+   }
+   #storname2 b{
+   float: left;
+   font-size: 14px;
+   color: #666;
+   font-family: Arial;
+   position: absolute;
+   left:55px;
+   }
+   #img1{
+   float: left;
+   margin-left:45px;
+   margin-right:20px;
+   margin-top: 2px;
+   }
+   #search{/*控制第二部分搜索框内容内容*/
+   width: 540px;
+   height: 56px;
+   margin-right: 0;
+   margin-top: 26px;
+   display: inline;
+   position: relative;
+   float: right;
+   margin: 30px 0 0 0;
+   font-family: 'Microsoft YaHei';
+   }
+   #search_text{/*控制第二部分搜索框*/
+   width: 356px;
+   height: 36px;
+   line-height: 18px;
+   padding: 8px 10px;
+   border: 1px solid #DDD;
+   margin-top: 0;
+   font-size: 12px;
+   float:left;
+   }
+   .subText{
+   outline: none;
+   }
+   #button1,#button2{/*控制第二部分搜索框按钮*/
+   display: inline-block;
+   width: 80px;
+   height: 36px;
+   line-height: 36px;
+   text-align: center;
+   font-size: 16px;
+   color: #fff;
+   font-family: 'Microsoft YaHei';
+   cursor: pointer;
+   letter-spacing: 2px;
+   }
+   #button1{/*控制第二部分搜索框按钮1*/
+   background-color: #3592e2;
+   float:left;
+   margin-right: -20px;
+   }
+   #button2{/*控制第二部分搜索框按钮2*/
+   background-color:#f70;
+   }
+   #search_hot{/*控制第二部分搜索框底下文字*/
+   width:54opx;
+   height:18px;
+   margin-top:3px;
+   }
+   #search_hot a{
+   color:#999;
+   font-size:12px;
+   font-family: 'Microsoft YaHei';
+   text-decoration: none;
+   float: left;
+   margin-right:8px;
+   white-space: nowrap;
+   }
+   /*---------------------第三部分内容开始------------------------*/
+   #fair{/*菜单按钮上面背景*/
+   background-image: url("image4/115096352775507107364430_x.jpg");
+   background-repeat: no-repeat;
+   background-position:center;
+   width:100%;
+   height: 120px;
+   }
+   #snmenuAll{
+   width:100%;
+   height:29px;
+   background-color: #464545;
+   }
+   #snmenu{/*菜单栏*/
+   width: 1100px;
+   height: 30px;
+   }
+   #snmenu a{
+   color: #fff;
+   text-decoration: none;
+   height: 27px;
+   text-align: center;
+   font-family: 微软雅黑;
+   font-size: 14px;
+   line-height: 30px;
+   }
+   #snmenu .mav1{
+   float:left;
+   width:100px;
+   height: 29px;
+   background-color: #464545;
+   margin-left: 4px;
+   transition: all 0.3s ease-out 0s;
+   }
+   #snmenu .mav1:hover {/*菜单栏悬浮样式*/
+   background: #000000;
+   width: 110px;
+   }
+   .mav_child{
+   background-color: #464545;
+   margin-top: -1px;
+   }
+   .mav_child div:HOVER{
+   background: #000000;
+   transition: all 0.2s ease-out 0s;
+   opacity: 1;
+   height: 35px;
+   width: 110px;
+   font-size: 16px;
+   line-height: 25px;
+   }
+   /*---------------------第四部分内容开始------------------------*/
+   #menudown1,#menudown2,#menudown3,#menudown4,#menudown5,#menudown6,#menudown7,#menudown8,#menudown9,#menudown10{/*菜单栏下面的多个背景*/
+   width:100%;
+   background-position:center;
+   background-repeat: no-repeat;
+   }
+   #menudown1{
+   background-image: url("image4/531028196139504357948670_x.jpg");
+   height:501px;
+   }
+   #menudown2{
+   background-image: url("image4/214510189012593569692827_x.jpg");
+   height:501px;
+   margin-top: -155px;
+   }
+   #menudown3{
+   background-image: url("image4/995961113130013067983880_x.jpg");
+   height:453px;
+   margin-top: -150px;
+   }
+   #menudown4{
+   background-image: url("image4/187692412091748080942800_x.jpg");
+   height:453px;
+   }
+   #menudown5{
+   background-image: url("image4/143410554415609939338149_x.jpg");
+   height:453px;
+   margin-top: -150px;
+   }
+   #menudown6{
+   background-image: url("image4/643152445126658974291150_x.jpg");
+   height:452px;
+   margin-top: -150px;
+   }
+   #menudown7{
+   background-image: url("image4/141974034982740463329340_x.jpg");
+   height:452px;
+   }
+   #menudown8{
+   background-image: url("image4/994714679156101397169420_x.jpg");
+   height:768px;
+   }
+   #menudown9{
+   background-image: url("image4/109723120020019172444689_x.jpg");
+   height:779px;
+   margin-top: -100px;
+   }
+   #menudown10{
+   background-image: url("image4/169273587018765706925400.gif");
+   height:304px;
+   margin-top: -100px;
+   }
+   #menudown11{
+   width:100%;
+   height:238px;
+   background-color:#000000;
+   }
+   /*---------------------第五部分内容开始------------------------*/
+   #bottom_top{/*底部上面那一部分内容*/
+   width: 100%;
+   height:278px;
+   background-color: #f5f5f5;
+   border-top: 1px solid #e7e7e7;
+   min-width: 990px;
+   }
+   #bottom_top1{/*底部上面那一部分的第一块内容*/
+    width: 1050px;
+    padding: 12px 0;
+    height: 73px;
+    border-bottom: 1px solid #eaeaea;
+   }
+   #bottom_top1 dl{
+   float: left;
+   width: 210px;
+   overflow: hidden;
+   }
+   #bottom_top1  dt img{
+   display: block;
+   width: 48px;
+   height: 48px;
+   position: relative;
+   left:40px;
+   }
+   #bottom_top1 dd a{
+   color: #333;
+   font-size: 14px;
+   font-weight: 700;
+   text-decoration: none;
+   display: inline-block;
+   line-height: 24px;
+   font-family: "Microsoft Yahei";
+   width:140px;
+   }
+   #bottom_top1 dd b{
+   display: inline-block;
+   color:#333;
+   font-size: 12px;
+   line-height: 22px;
+   color: #545454;
+   font-family: "Microsoft Yahei";
+   position: relative;
+   left:25px;
+   }
+   #bottom_top1 b a{
+   color: #545454;
+   }
+   #bottom_top1 dl dt{
+   float:left;
+   }
+   #bottom_top2{
+   position: relative;
+   width: 1030px;
+   }
+   #bottom_top2_1{
+   width: 850px;
+   height: 180px;
+   margin-left:-100px;
+   }
+   #bottom_top2_1 dl{
+   float: left;
+   height: 160px;
+   width: 170px;
+   text-align: left;
+   }
+   #bottom_top2_1 dt,#bottom_top2_2 p{
+   line-height: 40px;
+   font-weight: 700;
+   color: #545454;
+   height: 35px;
+   font-size: 14px;
+   overflow: hidden;
+   }
+   #bottom_top2_1 dd{
+   width: 100%;
+   line-height: 22px;
+   text-align: left;
+   }
+   #bottom_top2_1 a{
+   color: #545454;
+   font-size: 12px;
+   font-style: normal;
+   line-height: 22px;
+   text-decoration: none;
+   }
+   #bottom_top2_2{
+   float: left;
+   height: 180px;
+   width: 92px;
+   position: absolute;
+   right:50px;
+   top:0px;
+   text-align: left;
+   }
+   #bottom_top2_2 a{
+   color: #333;
+   font-size:12px;
+   text-decoration: none;
+   line-height: 1.5;
+   }
+   #bottom_top a:HOVER{
+   color:#f60;
+   text-decoration: underline;
+   }
+   /*---------------------底部链接---------------------*/   
+   #bottom{/*控制底部整体样式*/  
+   width:990px;
+   min-width: 990px;
+   font-size: 12px;
+   text-align: center;
+   margin-top: 15px;
+   }
+   #bottom a{/*控制底部整体a的样式*/
+   padding:7px;
+   color: #666666;
+   text-decoration: none;
+   }
+    #bottom a:HOVER{
+   text-decoration: underline;
+   }
+   #bottom span{
+   color: #666666;
+   }
+   #bottom_one,#bottom_two,#bottom_three,#bottom_four,#bottom_five{
+   height: 25px;
+   line-height: 25px;
+   }
+   #bottom_three,#bottom_four,#bottom_five{
+   color:#999;
+   }
+   #bottom_six a{
+   padding:5px;
+   }
+   #bottom_six{
+   margin-top: 7px;
+   }
+    </style>
+  </head>
+   
+  <body>
+    <div id="all"><!-- 所有内容 -->
+	   <div id="header" align="center"><!-- 网页头部所有内容 居中-->
+		    <div id="header_content"><!-- 网页头部内容-->
+			    <a href="http://www.suning.com" id="header_content1"  name="top">
+				    <img src="image4/QQ截图20170826225941.png" id="return" width="14px"/>
+				    <i>返回易购首页</i>
+				    <span>|</span>
+			    </a>
+			    <div id="firstbox" class="blurBox1"><!-- 网页头部第一个有子选项部分-->
+				    <a href="javascript:void(0);">
+				    	<span>网站导航</span>
+				    	<img src="image4/QQ截图20170827010245.png" id="down1"/>
+				    </a>
+				    <div id="firstHidden" style="display: none;"><!--网站导航底下第一个隐藏内容 -->
+					    <div id="firstHidden_1">
+						    <dt>特色购物</dt>
+						    <p><a href="javascript:void(0);">苏宁互联</a></p>
+						    <p><a href="javascript:void(0);">苏宁达人</a></p>
+						    <p><a href="javascript:void(0);">苏宁V购</a></p>
+						    <p><a href="javascript:void(0);">苏宁卡</a></p>
+						    <p><a href="javascript:void(0);">海外购</a></p>
+						    <p><a href="javascript:void(0);">大聚会</a><i id="hot"></i></p>
+						    <p><a href="javascript:void(0);">视频购物</a></p>
+						    <p><a href="javascript:void(0);">办公直通车</a></p>
+						    <p><a href="javascript:void(0);">以旧换新</a></p>
+						    <p><a href="javascript:void(0);">二手优品</a></p>
+						    <p><a href="javascript:void(0);">领券中心</a></p>
+						    <p><a href="javascript:void(0);">香港苏宁</a></p>
+					    </div>
+					    <div id="firstHidden_2">
+						    <dt>主题频道</dt>
+						    <p><a href="javascript:void(0);">电器城</a></p>
+						    <p><a href="javascript:void(0);">苏宁超市</a></p>
+						    <p><a href="javascript:void(0);">手机</a></p>
+						    <p><a href="javascript:void(0);">运动馆</a></p>
+						    <p><a href="javascript:void(0);">图书</a></p>
+						    <p><a href="javascript:void(0);">红孩子母婴</a></p>
+						    <p><a href="javascript:void(0);">美妆个护</a></p>
+						    <p><a href="javascript:void(0);">电脑</a></p>
+						    <p><a href="javascript:void(0);">服装城</a></p>
+						    <p><a href="javascript:void(0);">智能生活</a></p>
+						    <p><a href="javascript:void(0);">家装馆</a></p>
+						    <p><a href="javascript:void(0);">汽车用品</a></p>
+						    <p><a href="javascript:void(0);">苏宁热卖</a><i></i></p>
+						    <p><a href="javascript:void(0);">排行版</a></p>
+					    </div>
+					    <div id="firstHidden_3">
+						    <dt>生活助手</dt>
+						    <p><a href="javascript:void(0);">零钱宝</a><i></i></p>
+						    <p><a href="javascript:void(0);">手机充值</a></p>
+						    <p><a href="javascript:void(0);">火车票</a></p>
+						    <p><a href="javascript:void(0);">转账还款</a></p>
+						    <p><a href="javascript:void(0);">约服务</a></p>
+						    <p><a href="javascript:void(0);">水电煤</a></p>
+						    <p><a href="javascript:void(0);">保险</a></p>
+						    <p><a href="javascript:void(0);">机票</a></p>
+						    <p><a href="javascript:void(0);">门店查询</a></p>
+					    </div>
+					    <div id="firstHidden_4">
+						    <dt>会员服务</dt>
+						    <p><a href="javascript:void(0);">会员联盟</a><i></i></p>
+						    <p><a href="javascript:void(0);">延长保修</a></p>
+						    <p><a href="javascript:void(0);">免费书城</a></p>
+						    <p><a href="javascript:void(0);">易付宝</a></p>
+						    <p><a href="javascript:void(0);">苏宁理财</a></p>
+						    <p><a href="javascript:void(0);">苏宁金融</a></p>
+					    </div>
+					    <div id="firstHidden_5">
+					    <dt>更多热点</dt>
+						    <p><a href="javascript:void(0);">PPTV</a></p>
+						    <p><a href="javascript:void(0);">客户端</a></p>
+						    <p><a href="javascript:void(0);">商家入驻</a><i></i></p>
+						    <p><a href="javascript:void(0);">苏宁众包</a></p>
+						    <p><a href="javascript:void(0);">苏宁联盟</a></p>
+						    <p><a href="javascript:void(0);">用户体验</a></p>
+						    <p><a href="javascript:void(0);">公益频道</a></p>
+						    <p><a href="javascript:void(0);">校园先锋</a></p>
+						    <p><a href="javascript:void(0);">苏宁加盟</a></p>
+						    <p><a href="javascript:void(0);">苏宁云</a></p>
+						    <p><a href="javascript:void(0);">苏宁足球</a></p>
+					    </div>
+					    <span id="close">X</span>
+				    </div>
+			   </div>
+				    <div id="twobox" ><!-- 网页头部第二个有子选项部分-->
+					    <a href="javascript:void(0);">
+					    	<span>商家入驻</span>
+					    	<img src="image4/QQ截图20170827010245.png" id="down2"/>
+					    </a>
+					    <div id="secondHidden" style="display: none;"><!--网站导航底下第二个隐藏内容 -->
+					        <p><a href="javascript:void(0);">服务市场</a></p>
+						    <p><a href="javascript:void(0);">金融中心</a></p>
+						    <p><a href="javascript:void(0);">商家论坛</a></p>
+						    <p><a href="javascript:void(0);">培训中心</a></p>
+						    <p><a href="javascript:void(0);">增值服务</a></p>
+					    </div>
+				    </div>
+				    
+			   <div id="header_content2">
+				    <div id="threebox">
+					    <a href="login.html" id="login">请登录</a>
+					    <a href="register.html" id="register" style="color:#f60;">
+					                    注册有礼
+					    	<b id="gift"></b>
+					    </a>
+				    </div>
+				    <div id="fourbox" class="blurBox1"><!-- 网页头部第三个有子选项部分-->
+					    <a href="javascript:void(0);">我的订单
+					    	<img src="image4/QQ截图20170827010245.png" id="down3"/>
+					    </a>
+					    <div id="thirdHidden" style="display: none;"><!--网站导航底下第三个隐藏内容 -->
+						    <p><a href="javascript:void(0);">待支付</a></p>
+							<p><a href="javascript:void(0);">待收货</a></p>
+							<p><a href="javascript:void(0);">带评价</a></p>
+							<p><a href="javascript:void(0);">修改订单</a></p>
+					    </div>
+				    </div>
+				    <div id="fivebox" class="blurBox1"><!-- 网页头部第四个有子选项部分-->
+					    <a href="javascript:void(0)";>我的易购
+					    	<img src="image4/QQ截图20170827010245.png" id="down4"/>
+					    </a>
+					    <div id="forthHidden" style="display: none;">
+						    <a id="forthHidden_1"><img src="image4/0000000000_01_60x60.jpg" /></a>
+						    <div id="forthHidden_2">
+							    <a href="javascript:void(0);" id="pleaselogin">请登录</a>
+							    <a href="javascript:void(0);" id="click1" style="color:#fff;line-height: 22px">点击打卡</a>
+						    </div>
+						    <div id="forthHidden_3"><!--网站导航底下第四个隐藏内容 -->
+							    <a href="javascript:void(0);">我的二手</a>
+							    <a href="javascript:void(0);">我的收藏</a>
+							    <a href="javascript:void(0);">我的金融</a>
+							    <a href="javascript:void(0);">苏宁会员<img src="image4/QQ截图20170828093921.png" width="16px" id="huiyuan"/></a>
+							    <a href="javascript:void(0);">我的任性付</a>
+							    <a href="javascript:void(0);">我的优惠券</a>
+						    </div>
+					    </div>
+				    </div>
+				    <div id="sixbox" class="blurBox1"><!-- 网页头部第五个有子选项部分-->
+					    <a href="javascript:void(0)"; style="color:#f60;">
+						    <img src="image4/QQ截图20170827144148.png" id="car" width="16px"/>
+						          购物车0
+						    <img src="image4/QQ截图20170827010245.png" id="down5"/>
+					    </a>
+					    <div id="fiveHidden" style="display: none;"><!--网站导航底下第五个隐藏内容 -->
+						    <i id="icon"></i>
+						    <h5>不要让您的购物车空着哦，快去逛逛吧</h5>
+						    <div id="info1">
+						    <span>如果您已添加过宝贝，那就赶紧登录查看吧</span>
+						    <a href="login.html">登录</a>
+						    </div>
+					    </div>
+				    </div>
+				    <div id="sevenbox">
+					    <a href="javascript:void(0)";>易付宝</a>
+					</div>
+				    <div id="eightbox" class="blurBox1"<!-- 网页头部第六个有子选项部分-->
+					    <a href="javascript:void(0)";>
+						          客户服务
+						    <img src="image4/QQ截图20170827010245.png" id="down6"/>      
+					    </a>
+					    <div id="sixHidden" style="display: none;"><!--网站导航底下第六个隐藏内容 -->
+					    <p><a href="javascript:void(0);">苏宁棒客</a></p>
+					    <p><a href="javascript:void(0);">帮助中心</a></p>
+					    <p><a href="javascript:void(0);">查找门店</a></p>
+					    <p><a href="javascript:void(0);">退换/维修</a></p>
+					    <p><a href="javascript:void(0);">建议反馈</a></p>
+					    <p><a href="javascript:void(0);">在线咨询</a><img src="image4/QQ截图20170828110924.png" width="16px"/></p>
+					    </div>
+				    </div>
+					<div id="ninebox">
+					    <a href="javascript:void(0)"; id="login">企业采购</a>
+				    </div>
+				    <div id="tenbox" class="blurBox1">
+					    <a href="javascript:void(0)"; id="login">
+						    <img src="image4/QQ截图20170827152259.png" id="phone" width="16px">
+						         手机苏宁
+					    </a>
+					    <div id="sevenHidden" style="display: none;"><!--网站导航底下第七个隐藏内容 -->
+					    	<img src="image4/QQ截图20170828114144.png"/>
+					    </div>
+				    </div>
+				    
+			    </div>
+		    </div>
+	    </div>
+	   <div align="center"">
+	   <div id="logoContentall"><!-- 第二部分内容整体 -->
+		   <div id="logoContent"><!-- logo部分 -->
+			   <a href="javascript:void(0)" id="logo"><img src="image4/snlogo.png"/></a>
+			   <div id="storname"><!-- 紧挨logo的部分 -->
+				   <div id="shopname1">
+				   	   <a href="javascript:void(0)" id="name">苏宁体育官方旗舰店</a>
+				   </div>
+				   <div id="storname2">
+					   <a href="javascript:void(0)" >
+						  <span>店铺评分</span>
+						   <b>4.77</b>
+						   <img src="image4/QQ截图20170828135143.png" id="img1"/>
+					       <img src="image4/online.gif" id="img2"/>
+					   </a>
+				   </div>
+			   </div>
+			   <div id="search"><!-- 搜索框部分-->
+				   <form action=""><!-- 搜索栏-->
+				   	   <input type="text" id="search_text" placeholder="开学季领800元代金券" class="subText">
+				       <input type="button" value="搜易购" id="button1">
+				       <input type="button" value="搜本店" id="button2">
+			       </form>
+			       <div id="search_hot"><!-- 搜索框底下小字部分-->
+				       <a href="javascript:void(0)">4k超高清</a>
+				       <a href="javascript:void(0)">洗衣机798元气</a>
+				       <a href="javascript:void(0)">游戏本</a>
+				       <a href="javascript:void(0)">家具638元抢</a>
+				       <a href="javascript:void(0)">苏泊尔5折抢</a>
+				       <a href="javascript:void(0)">热水器</a>
+				       <a href="javascript:void(0)">手机</a>
+				       <a href="javascript:void(0)">苏泊尔</a>
+				       <a href="javascript:void(0)">洗衣液</a>
+			       </div>
+		       </div>
+		       
+		   </div>
+	   </div>
+	   <div id="menubg"><!-- 菜单栏整体部分-->
+	   <div id="fair"></div><!-- 菜单栏上面背景图部分-->
+	   <div id="snmenuAll">
+		   <div id="snmenu"><!-- 菜单栏部分-->
+			   <div class="mav1" id="allshop"><a href="//tiyu.suning.com/search.html?keyword=&amp;sortField=totalCount-desc" target="_blank">全部商品</a>
+					   <div class="mav_child" style="display: none;"><!-- 全部商品分类-->
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244906_1.html?keyword=&amp;sortField=totalCount-desc" target="_blank">热卖专区</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244907_1.html?keyword=&amp;sortField=price-ascc" target="_blank">官方球衣系列</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244908_1.html?keyword=&amp;sortField=price-asc" target="_blank">文化衫</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244909_1.html?keyword=&amp;sortField=price-asc" target="_blank">球鞋</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244910_1.html?keyword=&amp;sortField=price-asc" target="_blank">足球装备</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244911_1.html?keyword=&amp;sortField=price-asc" target="_blank">休闲饰品</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210244912_1.html?keyword=&amp;sortField=price-asc" target="_blank">训练服</a></div>
+						   <div style="position: relative;"><a style="font-size: 12px;" href="//tiyu.suning.com/list_210277010_1.html?keyword=&amp;sortField=price-asc" target="_blank">儿童用品</a></div>
+					   </div>
+			   </div>
+			   <div class="mav1"><a href="//tiyu.suning.com/" target="_blank">首页</a></div>
+			   <div class="mav1"><a href="//snfc.suning.com/" target="_blank">苏宁体育票务</a></div>
+			   <div class="mav1"><a href="//sports.suning.com/" target="_blank">运动馆</a></div>
+		       <div class="mav1"><a href="//shop.suning.com/70156438/10170921.html" target="_blank">苏宁体育</a></div>
+			   <div class="mav1"><a href="//fc.suning.com/" target="_blank">俱乐部官网</a></div>
+		   </div>
+	   </div>
+	   </div>
+	   <div id="menudown1"></div><!-- 菜单栏下面背景图1-->
+	   <div id="menudown2"></div><!-- 菜单栏下面背景图2-->
+	   <div id="menudown3"></div><!-- 菜单栏下面背景图3-->
+	   <div id="menudown4"></div><!-- 菜单栏下面背景图4-->
+	   <div id="menudown5"></div><!-- 菜单栏下面背景图5-->
+	   <div id="menudown6"></div><!-- 菜单栏下面背景图6-->
+	   <div id="menudown7"></div><!-- 菜单栏下面背景图7-->
+	   <div id="menudown8"></div><!-- 菜单栏下面背景图8-->
+	   <div id="menudown9"></div><!-- 菜单栏下面背景图9-->
+	   <div id="menudown10"></div><!-- 菜单栏下面背景图10-->
+	   <div id="menudown11"><!-- 菜单栏下面背景图11-->
+	   		<a href="#top"><img src="image4/190174014591832791710000_x.jpg"/></a>
+	   </div>
+	   
+	   <div id="bottom_top"><!-- 底部链接上面-->
+		   <div id="bottom_top1"><!-- 底部链接上面第一块-->
+			   <dl>
+				   <dt><a href="javascript:void(0)"><img src="image4/149386338830969041.jpg"/></a></dt>
+				   <dd><a href="javascript:void(0)">正品保障</a><b>正品保障、提供发票</b></dd>
+			   </dl>
+			   <dl>
+				   <dt><a href="javascript:void(0)"><img src="image4/149386339441846551.jpg"/></a></dt>
+				   <dd><a href="javascript:void(0)">极速物流</a><b>如约送货、送货入户</b></dd>
+			   </dl>
+			   <dl>
+				   <dt><a href="javascript:void(0)"><img src="image4/149386340040069121.jpg"/></a></dt>
+				   <dd><a href="javascript:void(0)">售后无忧</a><b>退还无忧、维修无忧</b></dd>
+			   </dl>
+			   <dl>
+				   <dt><a href="javascript:void(0)"><img src="image4/149386340760421563.jpg"/></a></dt>
+				   <dd><a href="javascript:void(0)">特色服务</a><b style="position: relative;left:20px;">私人定制家电套餐</b></dd>
+			   </dl>
+			   <dl>
+				   <dt><a href="javascript:void(0)"><img src="image4/149386341371637387.jpg"/></a></dt>
+				   <dd><a href="javascript:void(0)">帮助中心</a><b style="position: relative;left:10px;">您的购物指南</b></dd>
+			   </dl>
+		   </div>
+		   <div id="bottom_top2"><!-- 底部链接上面第二块-->
+			   <div id="bottom_top2_1">
+			       <dl>
+					   <dt>购物指南</dt>
+					   <dd><a href="javascript:void(0)" >导购演示</a></dd>
+					   <dd><a href="javascript:void(0)" >免费注册</a></dd>
+					   <dd><a href="javascript:void(0)" >会员等级</a></dd>
+					   <dd><a href="javascript:void(0)" >常见问题</a></dd>
+					   <dd><a href="javascript:void(0)" >品牌大全</a></dd>
+				   </dl>
+				   <dl>
+					   <dt>支付方式</dt>
+					   <dd><a href="javascript:void(0)" >苏宁支付</a></dd>
+					   <dd><a href="javascript:void(0)" >网银支付</a></dd>
+					   <dd><a href="javascript:void(0)" >快捷支付</a></dd>
+					   <dd><a href="javascript:void(0)" >分期付款</a></dd>
+					   <dd><a href="javascript:void(0)" >货到付款</a></dd>
+					   <dd><a href="javascript:void(0)" >任性付支付</a></dd>
+				   </dl>
+				   <dl>
+					   <dt>物流配送</dt>
+					   <dd><a href="javascript:void(0)" >免运费政策</a></dd>
+					   <dd><a href="javascript:void(0)" >配送服务承诺</a></dd>
+					   <dd><a href="javascript:void(0)" >签收验货</a></dd>
+					   <dd><a href="javascript:void(0)" >物流查询</a></dd>
+				   </dl>
+				   <dl>
+					   <dt>售后服务</dt>
+					   <dd><a href="javascript:void(0)" >退换货政策</a></dd>
+					   <dd><a href="javascript:void(0)" >退换货流程</a></dd>
+					   <dd><a href="javascript:void(0)" >购买延保服务</a></dd>
+					   <dd><a href="javascript:void(0)" >退款说明</a></dd>
+					   <dd><a href="javascript:void(0)" >退换货申请</a></dd>
+					   <dd><a href="javascript:void(0)" >维修/保养</a></dd>
+				   </dl>
+				   <dl>
+					   <dt>商家服务</dt>
+					   <dd><a href="javascript:void(0)" >商家入驻</a></dd>
+					   <dd><a href="javascript:void(0)" >培训中心</a></dd>
+					   <dd><a href="javascript:void(0)" >广告服务</a></dd>
+					   <dd><a href="javascript:void(0)" >商家帮助</a></dd>
+					   <dd><a href="javascript:void(0)" >服务市场</a></dd>
+					   <dd><a href="javascript:void(0)" >规则中心</a></dd>
+				   </dl>
+			   </div>
+			   <div id="bottom_top2_2">
+				   <p>身边苏宁</p>
+				   <a href="javascript:void(0)">全国300个城市1600家门店3000个服务点为您提供最贴心的服务！</a>
+			   </div>
+		   </div>
+	   </div>
+	   <div id="bottom"><!-- 底部链接 -->
+	    	<div id="bottom_one">
+				<a href="javascript:void(0)">苏宁控股</a><span>|</span>
+				<a href="javascript:void(0)">苏宁云商</a><span>|</span>
+				<a href="javascript:void(0)">苏宁互联</a><span>|</span>
+				<a href="javascript:void(0)">苏宁金融</a><span>|</span>
+				<a href="javascript:void(0)">苏宁支付</a><span>|</span>
+				<a href="javascript:void(0)">PPTV</a><span>|</span>
+				<a href="javascript:void(0)">红孩子</a><span>|</span>
+				<a href="javascript:void(0)">苏宁物流</a><span>|</span>
+				<a href="javascript:void(0)">手机苏宁</a><span>|</span>
+				<a href="javascript:void(0)">苏宁酒店</a><span>|</span>
+				<a href="javascript:void(0)">知识产权举报</a>
+			</div>
+			<div id="bottom_two">
+				<a href="javascript:void(0)">联系我们</a><span>|</span>
+				<a href="javascript:void(0)">诚聘英才</a><span>|</span>
+				<a href="javascript:void(0)">供应商入驻</a><span>|</span>
+				<a href="javascript:void(0)">广告平台</a><span>|</span>
+				<a href="javascript:void(0)">苏宁联盟</a><span>|</span>
+				<a href="javascript:void(0)">苏宁招标</a><span>|</span>
+				<a href="javascript:void(0)">友情链接</a><span>|</span>
+				<a href="javascript:void(0)">法律申明</a><span>|</span>
+				<a href="javascript:void(0)">用户体验提升计划</a><span>|</span>
+				<a href="javascript:void(0)">股东会员认证</a>
+			</div>
+			<div id="bottom_three">
+				Copyright? 2002-2017 ，苏宁云商集团股份有限公司版权所有
+				<a href="http://www.miitbeian.gov.cn" target="_blank" style="color:#999">苏ICP备10207551号-4</a>
+				<a href="http://img.suning.cn/public/v3/images/SUB1-20130131.png" target="_blank" style="color:#999">苏B1-20130131</a
+				<a href="http://img.suning.cn/public/v3/images/SUB2-20130376.png" target="_blank" style="color:#999">苏B2-20130376</a>
+			</div>
+			<div id="bottom_four">
+				<a href="http://res.suning.cn/public/v3/images/SUB2-20130391.png" target="_blank" style="color:#999">苏B2-20130391</a>
+				出版物经营许可证新出发苏批字第A-243号<span>|</span>
+				互联网药品信息服务资格证书<a href="//res.suning.cn/public/v3/images/yaopin_content.jpg" target="_blank" style="color:#999">（苏）-非经营性-2016-0005
+				</a>
+			</div>
+			<div id="bottom_five">
+			本网站直接或间接向消费者推销商品或者服务的商业宣传均属于“广告”（包装及参数、售后保障等商品信息除外）
+			</div>
+			<div id="bottom_six">
+				<a href="https://search.szfw.org/cert/l/CX20111018000608000610" target="_blank">
+				<img height="24" width="76" alt="诚信网站" src="image1/chengxin.png">
+				</a>
+				<a href="http://image.suning.cn/uimg/snnet/snnetImg/142891196680527240.jpg" target="_blank">
+				<img height="24" width="76" alt="中国联通授权网络经营代理商" src="image1/unicom.png">
+				</a>
+				<a href="http://img.suning.cn/public/v3/images/dianxin_content.jpg" target="_blank">
+				<img height="24" width="76" alt="中国电信授权网络经营代理商" src="image1/dianxin.jpg" ></a>
+				<a href="http://www.jsgsj.gov.cn:60101/keyLicense/verifKey.jsp?serial=320000163820130117100000009630&amp;signData=0+ADYt839gp1EiqiZXnsxsyOnpO32Wg4sFePaiV9+NtTV/XCAMXGzT/AOgycGMm0EjsR/Ot661M7h9GeStpA8QyJTs1Ip1K/CSNaemthn7f1NjI03x1E6v9ZRT+3M60WZIGLBEjFs5XMliufNz1cJlYDQrTZvaZbHyJ2KzgJB4Y=" target="_blank">
+				<img height="24" width="76" alt="电子营业执照" src="image1/dianzi.png">
+				</a>
+			</div>
+	  </div>
+    </div>
+  </body>
+</html>

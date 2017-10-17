@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>register.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	$("[type='text']").attr("class","blurText");
+    	//设置获得焦点事件和样式
+    	$("#userphone input,#phonecode input,#password input").focus(function(){
+    		if($(this).val()==this.defaultValue){
+    			$(this).val("").attr("class","subText");
+    			if($(this).parent().index()==3){
+    				$(this).attr("type","password")
+    			}
+    		}
+    	}).blur(function(){
+    		if($(this).val()==""){//用户未输入,恢复默认提醒文字
+    			$(this).val(this.defaultValue).attr("class","blurText");
+    		  }
+    	});
+    	//账号框表单验证
+    	var accounCheckRS=false;
+    	var passCheckRS=false;
+    	$("#userphone input").blur(function(){
+    		var patt=/^[1][0-9]{10}$/;
+    		if($(this).val()==this.defaultValue){//判断当光标移出，文本框等于默认文字时，错误提示框隐藏
+    			$(this).next().hide();
+    			accounCheckRS=false;
+    		}else{
+    			if(patt.test($(this).val())){//将输入的文字与规则作比较
+    			$("#accountCkeck").hide();
+    			$(this).next().show();
+    			accounCheckRS=true;
+    		   }else{//不满足
+    			$("#accountCkeck").show().html("格式不正确，请您输入正确的手机号。");
+    			$(this).next().hide();
+    		    accounCheckRS=false;
+    		    }
+    	    }
+    	});
+    	$("#userphone input").focus(function(){//判断当光标移入时，错误提示框隐藏
+    		$("#accountCkeck").hide();
+    	});
+    	
+        //密码框表单验证
+    	$("#password input").blur(function(){
+    		var patt=/^[0-9]{6,20}$/;
+    		if($(this).val()==this.defaultValue){//判断当光标移出，文本框等于默认文字时，错误提示框隐藏
+    			$("#suggestion").hide();
+    			accounCheckRS=false;
+    		}else{
+    			if(patt.test($(this).val())){//将输入的文字与规则作比较
+    			$("#passwordCkeck").hide();
+    			$("#suggestion").hide();
+    			passCheckRS=true;
+    		}else{//不满足
+    			$("#passwordCkeck").show().html("请输入6-20位密码");
+    		    $("#suggestion").hide();
+    			passCheckRS=false;
+    		}
+    		}
+    		
+    	});
+    	$("#password input").focus(function(){//判断当光标移入时，错误提示框隐藏
+    		$("#passwordCkeck").hide();
+    		$("#suggestion").show();
+    	});
+    	
+    	//对提交按钮进行验证
+    	$("#submit").click(function(){
+    		if(!(passCheckRS&&accounCheckRS)){
+    			$("#accountCkeck").show().html("请输入注册手机号");
+    			$("#passwordCkeck").hide();
+    			return false;
+    		}
+    	});
+    });
+    </script>
+    <style type="text/css">
+    *{/*清除默认设置*/
+    padding:0px;
+    margin: 0px;
+    border:0px;
+    }
+    body{/*控制整个body的背景和字体*/
+    background-color: #f8f8f8;
+    font-family: "Microsoft Yahei";
+    min-width: 1300px;
+    min-height: 900px;
+    }
+    /*----------头部内容开始-----------*/
+    #header{
+    width: 990px;
+    height: 88px;
+    }
+    #logo{/*logo设置*/
+    float: left;
+    width: 190px;
+    height: 100%;
+    margin-right: 24px;
+    background-image: url("image2/sprite.png");
+    background-repeat:no-repeat; 
+    }
+    #header span{
+    display: inline-block;
+    float:left;
+    font-size: 18px;
+    color: #666;
+    line-height: 88px; 
+    }
+    #change{
+    float: right;
+    margin-top: 63px;
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    }
+    #change:HOVER {
+	color: #F60;
+    }
+    /*-------------头部内容结束----------------*/
+    
+    /*--------------主体内容开始---------------*/ 
+    #content{/*--控制所有内容--*/ 
+    clear:both;
+    width: 990px;
+    border: 1px solid #ddd;
+    border-top: 3px solid #f90;
+    background: #fff;
+    padding: 55px 0;
+    line-height: 1.5;
+    }
+    #content_main{/*--控制注册表单整体--*/ 
+    width: 380px;
+    height:345px;
+    position: relative;
+    }
+    #gift i{/*--控制注册表单礼包图片--*/
+    display: inline-block;
+    background-image: url("image2/sprite.png");
+    background-position:-75px -93px;
+    width: 19px;
+    height: 17px;
+    float: left;
+    margin-right: 6px;
+    }
+    #gift{
+    float: left;
+    font-size: 14px;
+    color: #222;
+    line-height: 17px;
+    padding-left: 2px;
+    margin-bottom: 17px; 
+    }
+    #gift span{
+    color:#f40;
+    }
+    #userphone,#phonecode,#password{/*--控制注册表单文本框的样式--*/
+    clear:both;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    }
+    #userphone{/*--账号框--*/
+    position: absolute;
+    top:35px;
+    }
+    #phonecode{/*--验证码框--*/
+    position: absolute;
+    top:100px;
+    }
+    #password{/*--密码框--*/
+    position: absolute;
+    top:180px;
+    }
+    #userphone span,#phonecode span,#password span{/*--控制三个框的标题语--*/
+    display:inline-block;
+    width: 76px;
+    height: 38px;
+    line-height:38px;
+    color: #222;
+    margin-left: 11px;
+    float: left;
+    text-align:left;
+    }
+    #userphone input,#password input{/*--文本框和密码框的大小--*/
+    display:inline-block;
+    width: 291px;
+    height: 38px;
+    line-height:38px;
+    float: left;
+    cursor: text;
+    }
+    #phonecode input{/*--验证码框的大小--*/
+    display:inline-block;
+    width: 142px;
+    height: 38px;
+    line-height:38px;
+    float: left;
+    cursor: text;
+    }
+    #phonecode a{/*-获取验证码框框的样式--*/
+    display:inline-block;
+    float: left;
+    width: 148px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: #f5f5f5;
+    border: 1px solid #bbb;
+    font-size: 14px;
+    margin: -1px -1px 0 0;
+    text-decoration: none;
+    color: #222;
+    }
+    #phonecode a:HOVER {/*-获取验证码框框悬浮的样式--*/
+	background: #f5f5f5;
+    color: #F60;
+    }
+    /*-----------提前隐藏的所有内容样式开始------------*/
+    #accountCkeck,#passwordCkeck，#suggestion{/*--错误提醒框整体的样式--*/
+    width:380px;
+    height: 22px;
+    line-height: 22px;
+    color: red;
+    }
+    #accountCkeck{/*-账号错误提醒框的样式--*/
+    position: absolute;
+    top:75px;
+    left:0px;
+    font-size:12px;
+    }
+    #passwordCkeck{/*-密码错误提醒框的样式--*/
+    position: absolute;
+    top:220px;
+    left:0px;
+    font-size:12px;
+    color: red;
+    }
+    #suggestion{/*-密码提示框的样式--*/
+    position: absolute;
+    top:220px;
+    left:0px;
+    font-size:12px;
+    }
+    #suggestion em{
+    color: #999;
+    font-style:normal;
+    }
+    #suggestion a{
+    text-decoration:none;
+    color: #222;
+    }
+    #suggestion a:HOVER {
+	color: #f60;
+    }
+    
+    #duigou{/*--账号框输入正确时对勾样式--*/
+    display:inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("image2/sprite.png");
+    background-position: -120px -93px;
+    position: absolute;
+    top:11px;
+    right:12px;
+    }
+    .subText{
+    color:#333;
+    outline: none;
+    }
+    .blurText{
+    color:#cacaca;
+    }
+    
+    
+    /*-----------提前隐藏的所有内容样式结束------------*/
+    
+    #items {/*-条目样式--*/
+    position: absolute;
+    top:270px;
+    left:0px;
+    }
+    #items span{
+    color: #222;
+    font-size: 12px;
+    display:inline-block;
+    float: left;
+    line-height: 0.8;
+    }
+    #items a{/*-条目中超链接a的样式--*/
+    color: #222;
+    font-size: 12px;
+    text-decoration: none;
+    display:inline-block;
+    float: left;
+    line-height: 0.8;
+    }
+    #items a:HOVER{/*-条目中超链接悬浮的样式--*/
+    color: #f60;
+    }
+    #items input{/*-复选框--*/
+    display:inline-block;
+    float: left;
+    margin-right: 5px;
+    }
+    #submit{
+    display:inline-block;
+    width: 100%;
+    line-height: 40px;
+    background: #f60;
+    font-size: 20px;
+    color: #fff;
+    text-decoration:none;
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    }
+    #submit:HOVER {
+	background: #f50;
+    }
+   /*--------------主体内容结束---------------*/  
+   #protocolTip{/*企业用户注册*/
+   width:380px;
+   margin-top: 5px;
+   }
+   #protocolTip i{
+   background-image: url("image2/sprite.png");
+   background-position:-141px -93px;
+   float: left;
+   width: 17px;
+   height: 15px;
+   margin: 5px 5px 0 0;
+   }
+   #protocolTip a{
+   display:inline-block;
+   color: #f60;
+   font-size: 14px;
+   float: left;
+   height: 21px;
+   text-decoration: none;
+   }
+  /*--------------底部链接---------------*/   
+   #bottom{/*控制底部整体样式*/  
+   width:990px;
+   min-width: 990px;
+   font-size: 12px;
+   text-align: center;
+   margin-top: 15px;
+   }
+   #bottom a{/*控制底部整体a的样式*/
+   padding:7px;
+   color: #666666;
+   text-decoration: none;
+   }
+    #bottom a:HOVER{
+   color: #f60;
+   }
+   #bottom span{
+   color: #666666;
+   }
+   #bottom_one,#bottom_two,#bottom_three,#bottom_four,#bottom_five{
+   height: 25px;
+   line-height: 25px;
+   }
+   #bottom_three,#bottom_four,#bottom_five{
+   color:#999;
+   }
+   #bottom_six a{
+   padding:5px;
+   }
+   #bottom_six{
+   margin-top: 7px;
+   }
+    </style>
+  </head>
+  
+  <body>
+    <div id="all" align="center"><!-- 控制整体内容居中 -->
+	    <div id="header"><!-- 头部内容 -->
+		    <a href="http://www.suning.com" id="logo"></a>
+		    <span>欢迎注册</span>
+		    <a href="login.html" id="change">我已经注册，马上登录&gt;</a>
+	    </div>
+	    <div id="content"><!-- 整体内容 -->
+		    <div id="content_main"><!-- 主要内容 -->
+			    <div id="gift"><i></i>注册领<span>199</span>元大礼包</div>
+			    <form action="#"><!-- 表单内容 -->
+				    <div id="userphone">
+				    	<span>手机号码</span>
+				    	<input type="text" value="请输入手机号">
+				    	<i id="duigou" style="display: none;"></i><!-- 对勾 -->
+				    </div>
+				    <div id="accountCkeck" style="display: none;" align="left"></div><!-- 账号错误提醒框 -->
+				    <div id="phonecode">
+					    <span>手机验证码</span>
+					    <input type="text" value="请输入手机验证码">
+					    <a href="javascript:void(0)">获取短信验证码</a>
+				    </div>
+				    <div id="password">
+					    <span>设置密码</span>
+					    <input type="text" value="请输入密码">
+				    </div>
+				    <div id="passwordCkeck" style="display: none;  align="left" ></div><!-- 密码错误提醒框 -->
+				    <div id="suggestion" style="display: none;"><em>6-20个字符，由字母，数字和符号的两种以上组合。</em><a id="pswSuggestion" href="javascript:void(0)">密码设置建议</a></div><!-- 密码提示框 -->
+				    <div id="items">
+					    <input type="checkbox" checked="checked">
+					    <a href="javascript:void(0)" target="_blank">《苏宁易购会员章程》</a>
+					    <a href="javascript:void(0)" target="_blank" >《易付宝协议》</a>
+					    <span>及</span>
+					    <a href="javascript:void(0)" target="_blank">《苏宁广告联盟在线协议》</a>
+				    </div>
+				    <a href="javascript:void(0)" id="submit">提交注册</a>
+			    </form>
+		    </div>
+		    <div id="protocolTip">
+		    <a href="javascript:void(0)"><i></i>企业用户注册&gt;</a>
+		    </div>
+	    </div>
+	    <div id="bottom">
+	    	<div id="bottom_one">
+				<a href="javascript:void(0)">苏宁控股</a><span>|</span>
+				<a href="javascript:void(0)">苏宁云商</a><span>|</span>
+				<a href="javascript:void(0)">苏宁互联</a><span>|</span>
+				<a href="javascript:void(0)">苏宁金融</a><span>|</span>
+				<a href="javascript:void(0)">苏宁支付</a><span>|</span>
+				<a href="javascript:void(0)">PPTV</a><span>|</span>
+				<a href="javascript:void(0)">红孩子</a><span>|</span>
+				<a href="javascript:void(0)">苏宁物流</a><span>|</span>
+				<a href="javascript:void(0)">手机苏宁</a><span>|</span>
+				<a href="javascript:void(0)">苏宁酒店</a><span>|</span>
+				<a href="javascript:void(0)">知识产权举报</a>
+			</div>
+			<div id="bottom_two">
+				<a href="javascript:void(0)">联系我们</a><span>|</span>
+				<a href="javascript:void(0)">诚聘英才</a><span>|</span>
+				<a href="javascript:void(0)">供应商入驻</a><span>|</span>
+				<a href="javascript:void(0)">广告平台</a><span>|</span>
+				<a href="javascript:void(0)">苏宁联盟</a><span>|</span>
+				<a href="javascript:void(0)">苏宁招标</a><span>|</span>
+				<a href="javascript:void(0)">友情链接</a><span>|</span>
+				<a href="javascript:void(0)">法律申明</a><span>|</span>
+				<a href="javascript:void(0)">用户体验提升计划</a><span>|</span>
+				<a href="javascript:void(0)">股东会员认证</a>
+			</div>
+			<div id="bottom_three">
+				Copyright? 2002-2017 ，苏宁云商集团股份有限公司版权所有
+				<a href="http://www.miitbeian.gov.cn" target="_blank" style="color:#999">苏ICP备10207551号-4</a>
+				<a href="http://img.suning.cn/public/v3/images/SUB1-20130131.png" target="_blank" style="color:#999">苏B1-20130131</a
+				<a href="http://img.suning.cn/public/v3/images/SUB2-20130376.png" target="_blank" style="color:#999">苏B2-20130376</a>
+			</div>
+			<div id="bottom_four">
+				<a href="http://res.suning.cn/public/v3/images/SUB2-20130391.png" target="_blank" style="color:#999">苏B2-20130391</a>
+				出版物经营许可证新出发苏批字第A-243号<span>|</span>
+				互联网药品信息服务资格证书<a href="//res.suning.cn/public/v3/images/yaopin_content.jpg" target="_blank" style="color:#999">（苏）-非经营性-2016-0005
+				</a>
+			</div>
+			<div id="bottom_five">
+			本网站直接或间接向消费者推销商品或者服务的商业宣传均属于“广告”（包装及参数、售后保障等商品信息除外）
+			</div>
+			<div id="bottom_six">
+				<a href="https://search.szfw.org/cert/l/CX20111018000608000610" target="_blank">
+				<img height="24" width="76" alt="诚信网站" src="image1/chengxin.png">
+				</a>
+				<a href="http://image.suning.cn/uimg/snnet/snnetImg/142891196680527240.jpg" target="_blank">
+				<img height="24" width="76" alt="中国联通授权网络经营代理商" src="image1/unicom.png">
+				</a>
+				<a href="http://img.suning.cn/public/v3/images/dianxin_content.jpg" target="_blank">
+				<img height="24" width="76" alt="中国电信授权网络经营代理商" src="image1/dianxin.jpg" ></a>
+				<a href="http://www.jsgsj.gov.cn:60101/keyLicense/verifKey.jsp?serial=320000163820130117100000009630&amp;signData=0+ADYt839gp1EiqiZXnsxsyOnpO32Wg4sFePaiV9+NtTV/XCAMXGzT/AOgycGMm0EjsR/Ot661M7h9GeStpA8QyJTs1Ip1K/CSNaemthn7f1NjI03x1E6v9ZRT+3M60WZIGLBEjFs5XMliufNz1cJlYDQrTZvaZbHyJ2KzgJB4Y=" target="_blank">
+				<img height="24" width="76" alt="电子营业执照" src="image1/dianzi.png">
+				</a>
+			</div>
+	    </div>
+    </div>
+  </body>
+</html>

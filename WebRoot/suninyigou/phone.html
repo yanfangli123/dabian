@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>phone.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+    	  //头部第一部分隐藏与显示
+    	  $("#jinrongApp>a,#jinrongApp>div").hover(function(){
+    		$("#app-pop").show();
+    		$("#jinrongApp>a").attr("class","subTag");
+    		$("#down").attr("class","subdown");
+    	},function(){
+    		$("#app-pop").hide();
+    		$("#jinrongApp>a").attr("class","blurTag");
+    		$("#down").attr("class","blurdown");
+    	});
+    	 $("#jinrongApp>a").hover(function(){//头部第一部分手机图标切换显示
+    		 $("#phone1").toggle();
+    		 $("#phone2").toggle();
+    	});
+    	 //头部第二部分隐藏与显示
+    	  $(".header_right_3>a,.header_right_3>div").hover(function(){
+    		$("#sever").show();
+    		$(".header_right_3>a").attr("class","subTag");
+    		$("#down1").attr("class","subdown");
+    	},function(){
+    		$("#sever").hide();
+    		$(".header_right_3>a").attr("class","blurTag");
+    		$("#down1").attr("class","blurdown");
+    	});
+    	 $("#onlinepeople").hover(function(){//头部第二部分隐藏部分里面的样式变化
+    		 $(this).attr("class","subServe");
+    	},function(){
+    		$(this).attr("class","blurServe");
+    	});
+     });
+    
+    </script>
+    <style type="text/css">
+    *{/*清除默认设置*/
+    margin: 0px;
+    padding:0px;
+    border:0px;
+    }
+    #header{
+    position: relative;
+    height: 33px;
+    line-height: 32px;
+    border-bottom: 1px solid #f0f0f0;
+    width:100%;
+    min-width: 1190px;
+    font-family: 'microsoft Yahei';
+    }
+    #header_content{
+    width:1190px;
+    height:33px;
+    }
+    .header_left{
+    width:190px;
+    height:33px;
+    float: left;
+    }
+    .header_left a{/*控制头部a的样式*/
+    font-size:12px; 
+    float: left;
+    text-decoration: none;
+    display:inline-block;
+    line-height: 32px;
+    }
+    #personal{/*个人*/
+    margin-right: 10px;
+    color: #39f;
+    }
+    #business{/*企业*/
+    color: #666;
+    }
+    #jinrongApp a{/*控制手机图标一整块的样式*/
+    display: block;
+    width: 120px;
+    height: 33px;
+    color: #666;
+    text-decoration: none;
+    line-height: 32px;
+    float:left;
+    margin-left:10px;
+    }
+    #down{/*控制向下箭头的样式*/
+    position: relative;
+    left:2px;
+    top:2px;
+    }
+    .header_right{
+    width:361px;
+    height:33px;
+    float: right;
+    }
+    .header_right a{
+    font-size: 12px;
+    color:#666;
+    text-decoration: none;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    }
+    .header_right span{
+    font-size: 12px;
+    color:#666;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    }
+    #a1{
+    margin-right: 20px;
+    }
+    .header_right_2 a{
+    margin-left: 10px;
+    margin-right: 10px;
+    }
+    .header_right_3 a{
+    display: block;
+    width: 70px;
+    line-height:33px;
+    padding-left: 10px;
+    height: 33px;
+    z-index: 2;
+    text-align: left;
+    }
+    .header_right_4 {
+    margin-left: 10px;
+    margin-right: 10px;
+    }
+    .header_right_5 {
+    margin-left: 10px;
+    }
+    #header a:HOVER {/*控制整个头部悬浮时a的颜色*/
+	color: #39f;
+    }
+    #app-pop{/*苏宁金融App下的隐藏内容*/
+    position: absolute;
+    margin-left:68px;
+    top: 33px;
+    width: 140px;
+    height: 148px;
+    padding-top: 14px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    overflow: hidden;
+    }
+    #app-pop a{
+    position: relative;
+    top:-10px;
+    margin-right: 10px;
+    color: #666;
+    text-decoration: none;
+    }
+    #sever{/*控制头部第二部分隐藏部分*/
+    position: absolute;
+    top: 33px;
+    margin-left:81px;
+    width: 138px;
+    height: 73px;
+    padding-top: 5px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    overflow: hidden;
+    color: #666;
+    font-size: 12px;
+    z-index:1;
+    }
+    #sever p{
+    display:inline-block;
+    }
+    #num{
+    color: #39f;
+    font-weight: normal;
+    margin-left: 5px;
+    }
+    #onlinepeople{
+    display: block;
+    float: none;
+    margin: 3px auto 0;
+    width: 94px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 3px;
+    text-align: center;
+    overflow: hidden;
+    }
+    #online{
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 5px;
+    background: url("image3/icon-bg.png");
+    overflow: hidden;
+    }
+    /*----------需要用jquery代码上控制的样式------------*/
+    
+    #phone1{/*控制手机图标的样式*/
+    position: relative;
+    left:5px;
+    top:4px;
+    display:inline-block;
+    margin-right:6px;
+    }
+    #phone2{/*控制手机图标的样式*/
+    position: relative;
+    left:5px;
+    top:5px;
+    display:inline-block;
+    margin-right:6px;
+    }
+    /*----------控制箭头在移入移出时的动画---------*/
+    .subdown{
+    transform: rotate(180deg);
+    transition: all 0.2s ease 0s;
+    }
+    .blurdown{
+    transform: rotate(0deg);
+    transition: all 0.2s ease 0s;
+    }
+    
+    .blurTag{/*控制苏宁App失去焦点时的样式*/
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    }
+    .subTag{/*控制苏宁App获得焦点时的样式*/
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    }
+    
+    .subServe{/*控制第二部分隐藏部分里面获得焦点的样式*/
+    border: 1px solid #ffa200
+    }
+    .blurServe{/*控制第二部分隐藏部分里面失去焦点的样式*/
+    border: 1px solid #ddd ;
+    }
+     /*--------------------logo所在行内容---------------*/
+    #logoAll{/*控制logo整体的样式*/
+    width:100%;
+    height:80px;
+    }
+    #logo_content{/*控制logo主体的样式*/
+    width:1190px;
+    height:80px;
+    }
+   
+    #logo img{/*控制logo的样式*/
+    width: 316px;
+    height: 28px;
+    float: left;
+    margin-top: 26px;
+    }
+    #logoRight img{/*控制logo紧挨着的右边的样式*/
+    float: left;
+    margin-top: 26px;
+    }
+    #myCount{/*控制logo最右边   我的账户  的样式*/
+    margin-right:10px;
+    float: right;
+    height: 40px;
+    margin-top: 16px;
+    }
+    #myCount a{
+    color: #39f;
+    line-height: 40px;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'microsoft Yahei'; 
+    }
+    #myCount a img{
+    position: relative;
+    top:8px;
+    }
+    #logo_content_daohang ul{/*控制logo那一行的导航样式*/
+    list-style-type: none;
+    line-height: 40px;
+    position: relative;
+    top:20px;
+    right:-30px;
+    }
+    #logo_content_daohang li{
+    float: left;
+    position: relative;
+    float: left;
+    padding: 0 17px;
+    text-align: center;
+    }
+    #logo_content_daohang li a{
+    color: #333;
+    text-decoration: none;
+    font-family: 'microsoft Yahei';
+    font-size: 16px;
+    }
+    #logo_content_daohang  i{
+    display:inline-block;
+    position: absolute;
+    top: 18px;
+    left: 5px;
+    width: 6px;
+    height: 6px;
+    background: #39f;
+    }
+    #logo_content_daohang span{
+    font-size: 14px;
+    color: #999;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+    }
+    #logo_content_daohang li a:HOVER{
+    color: #39f;
+    }
+    /*--------------------蓝色导航栏内容---------------*/
+    #bluedaohang{/*控制蓝色导航条样式*/
+    width:100%;
+    padding: 4px 0;
+    background-color: #2b82d9;
+    margin-bottom: 10px;
+    height:28px;
+    }
+    #bluedaohang ul{
+    width: 990px;
+    height:28px;
+    list-style: none;
+    }
+    #bluedaohang ul li{
+    float: left;
+    display: inline-block;
+    }
+    #bluedaohang ul li a{
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 12px;
+    margin-right: 11px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'microsoft Yahei';
+    }
+    .subAdd{/*蓝色导航栏获得焦点的样式*/
+    background: #559be1;
+    border-radius: 3px;
+    }
+    /*--------------------充值选项卡部分---------------*/
+    #subTag{/*控制选项卡的样式*/
+    width:990px;
+    height:25px;
+    padding:20px 0px;
+    }
+    #subTag_right a{/*控制选项卡右边 充值记录 的样式*/
+    display:inline-block;
+    color: #39f;
+    text-decoration: none;
+    line-height: 30px;
+    float: right;
+    font-size:12px;
+    margin-right: 20px;
+    font-family: 'microsoft Yahei';
+    }
+    #subTag_left ul{
+    list-style: none;
+    margin-top: -25px;
+    }
+    #subTag_left li{
+    float: left;
+    height: 50px;
+    text-align: center;
+    }
+    .one{/*控制选项卡  话费充值  的样式*/
+    color: #39f;
+    background-image: url("image3/flow_hover.png");
+    background-repeat:no-repeat;
+    cursor: default; 
+    font-size: 20px;
+    background-position:center;
+    background-position: center 30px;
+    font-family: "Microsoft YaHei";
+    width: 104px;
+    } 
+    .title{/*控制选项卡  流量充值  的样式*/
+    font-size: 20px;
+    margin-left: 45px;
+    font-family: "Microsoft YaHei";
+    vertical-align: middle;
+    color: #333;
+    width: 104px;
+    }
+    #Tag em{/*控制选项卡  |   的样式*/
+    display: block;
+    width: 1px;
+    height: 15px;
+    background: #cdcdcd;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    left:20px;
+    top:8px;
+    }
+    #guangbo{/*控制广播内容的样式*/
+    width:950px;
+    height:20px;
+    padding: 12px 19px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ffe5cc;
+    background: #fffcf9;
+    color: #666;
+    }
+   .laba{/*控制小喇叭的样式*/
+    float: left;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-position: -11px 0;
+    background-image: url("image3/comm-icons (1).png");
+    }
+    #laba_word{
+    text-decoration: none;
+    color: #333;
+    line-height: 20px;
+    font-family: 'microsoft Yahei';
+    font-size: 12px;
+    float: left;
+    }
+    #laba_word:HOVER{
+    color: #f70;
+    text-decoration: underline;    
+    }
+    .closeall{
+    float: right;
+    }
+    #phoneInfo{/*充值信息*/
+    background-color: #f6f6f6;
+    height: 58px;
+    width: 988px;
+    border: 1px solid #e9e9e9;
+    position: relative;
+    }
+    #phoneInfo ul{
+    list-style-type: none;
+    margin: 18px 0 0 85px;
+    }
+    #phoneInfo ul li{
+    float: left;
+    font-size: 16px;
+    color: #999;
+    font-family: Microsoft Yahei;
+    text-align: left;
+    line-height: 28px;
+    }
+    #phoneInfo ul li span a{
+    position: relative;
+    top:-10px;
+    }
+    .mr1,.mr2,.mr3,.mr4{
+    display: inline-block;
+    height: 28px;
+    width: 35px;
+    background-image: url("image3/step.jpg");
+    background-repeat: no-repeat;
+    }
+    .mr1{
+    background-position: 0 0;
+    }
+    .mr2{
+    background-position: -36px -29px;
+    }
+    .mr3{
+    background-position: -36px -58px;
+    }
+    .mr4{
+    background-position:-36px -87px;
+    }
+    #phoneInfo hr{
+    width: 114px;
+    height: 0;
+    line-height: 0;
+    border: 0;
+    border-top: 1px solid #999;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    }
+    .subColor{
+    color:#ffa200;
+    }
+    #fairChoose{/*手机充值内容整体*/
+    position: relative;
+    width:988px;
+    height:404px;
+    border: 1px solid #e9e9e9;
+    border-top: none;
+    overflow: hidden;
+    }
+    #fairChoose_content{/*手机充值内容整体内容*/
+    width: 679px;
+    padding: 20px 45px 45px;
+    margin-top:35px;
+    border:1px #fff solid;
+    }
+    #fairChoose_main{
+    width: 679px;
+    height: 304px;
+    border:1px #fff solid;
+    }
+    #table{/*手机号码   设置*/
+    float: left;
+    font-size: 14px;
+    text-align: right;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 25px;
+    font-family: "microsoft yahei";
+    color:#333;
+    }
+    #table_text input{/*手机号码   文本框 设置*/
+    height: 40px;
+    width: 232px;
+    padding: 11px 0 11px 7px;
+    line-height: 16px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #cecece;
+    float: left;
+    }
+    #table_history{/*手机号码 历史纪录   设置*/
+    width: 63px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #cecece;
+    position: relative;
+    float: left;
+    color: #39f;
+    font-size: 12px;
+    padding-left: 37px;
+    cursor: pointer;
+    }
+    #table_history i{/*手机号码 历史纪录 图标  设置*/
+    background-image: url("image3/comm-icons (1).png");
+    background-repeat: no-repeat;
+    background-position: -379px -96px;
+    width: 20px;
+    height: 16px;
+    display: block;
+    position:absolute;
+    top: 12px;
+    left: 12px;
+    }
+    #table_history:HOVER i{/*手机号码 历史纪录 图标 悬浮  设置*/
+    background-image: url("image3/comm-icons (1).png");
+    background-repeat: no-repeat;
+    background-position: -398px -96px;
+    width: 20px;
+    height: 16px;
+    display: block;
+    position:absolute;
+    top: 12px;
+    left: 12px;
+    }
+    #table_history:HOVER{/*手机号码 历史纪录 悬浮  设置*/
+    color:#f70;
+    }
+    #firstMoney{
+    width:679px;
+    height:40px;
+    line-height: 40px;
+    margin-top: 70px;
+    clear: both;
+    }
+    #title2 {
+    float: left;
+    font-size: 14px;
+    text-align: right;
+    width: 140px;
+    height: 40px;
+    margin-right: 25px;
+    font-family: "microsoft yahei";
+    color:#333;
+    }
+    #firstLine a{
+    display:inline-block;
+    text-decoration:none;
+    float: left;
+    margin-right:9px;
+    }
+    .blurMoney{/*充值面额  价格失去焦点的样式 设置*/
+    width: 77px;
+    height: 37px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 37px;
+    color: #666;
+    float: left;
+    margin-right:9px;
+    font-size: 12px;
+    }
+    .subMoney{/*充值面额  价格得到焦点的样式 设置*/
+    border: none;
+    width: 79px;
+    height: 39px;
+    color: #fe6601;
+    line-height: 39px;
+    font-weight: 700;
+    background-image: url("image3/cell-choose-bg.jpg");
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    }
+    #secondMoney{
+    width:679px;
+    height:40px;
+    line-height: 40px;
+    margin-top: 9px;
+    clear: both;
+    }
+    #title3 {
+    float: left;
+    width: 140px;
+    height: 40px;
+    margin-right: 25px;
+    color:#333;
+    }
+    #secondLine a{
+    display:inline-block;
+    text-decoration:none;
+    float: left;
+    margin-right:9px;
+    }
+    .blurMoney:HOVER{/*失去焦点的  价格悬浮的样式 设置*/
+    border:1px solid  #ff7c26;
+    background-color:#fff7f2;
+    }
+    #price{
+    width:679px;
+    height:40px;
+    line-height: 40px;
+    margin-top:35px;
+    clear: both;
+    }
+    #title4{
+    float: left;
+    font-size: 14px;
+    text-align: right;
+    width: 140px;
+    height: 40px;
+    margin-right: 25px;
+    font-family: "microsoft yahei";
+    color:#333;
+    }
+    #price_info{
+    float: left;
+    font-size: 20px;
+    color: #f60;
+    line-height: 40px;
+    font-family: 'microsoft Yahei';
+    }
+    #button a{/*充值按钮*/
+    display: inline-block;
+    width: 138px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    background-color: #ffab1a;
+    border: 1px solid #ffab1a;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'microsoft Yahei';
+    text-decoration: none;
+    margin-top: 25px;
+    }
+    #button a:HOVER {/*充值按钮 悬浮样式*/
+	background: #ffa200;
+    border-color: #ffa200;
+    }
+    /*--------------------底部问题---------------*/
+    #bottom{
+    width:990px;
+    }
+    #problem{/*常见问题*/
+    margin: 49px 0 5px;
+    width: 990px;
+    height:20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #333;
+    background-image: url("image3/dot-bg.png");
+    background-position: bottom;
+    background-repeat:repeat-x;
+    }
+    #title_bottom{
+    float:left;
+    padding-right: 4px;
+    width: 80px;
+    background: #FFF;
+    font-family: "Microsoft Yahei";
+    line-height: 20px;
+    font-size: 20px;
+    color: #333;
+    }
+    #problem_tilte{/*常见问题清单*/
+    float: left;
+    width: 656px;
+    height:351px;
+    font-family: 'microsoft Yahei';
+    }
+    #problem_tilte dl{
+    width:100%;
+    height:300px;
+    margin-top: 33px;
+    }
+    .detail{
+    margin: 5px 8px 0 0;
+    float: left;
+    overflow: hidden;
+    height: 8px;
+    width: 8px;
+    background-image: url("image3/faq-bg.png");
+    }
+    .titles{
+    float: left;
+    font-size: 14px;
+    color: #333;
+    font-family: "Microsoft Yahei";
+    }
+    #problem_tilte  dd{
+    clear:both;
+    margin-top:10px;
+    margin-bottom: 25px;
+    padding-left: 16px;
+    font-size: 12px;
+    color: #999;
+    line-height: 22px;
+    float: left;
+    text-align: left;
+    }
+    #more{
+    float: left;
+    overflow: hidden;
+    zoom: 1;
+    width: 120px;
+    text-indent: 16px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #999;
+    text-decoration: none;
+    }
+    #changeCode{
+    margin-top: 15px;
+    }
+    #bottom_box{
+    width:1190px;
+    height:120px;
+    border:1px #fff solid;
+    }
+    #bottom_link{/*底部链接*/
+    position: relative;
+    padding: 15px 0;
+    border-top: 1px solid #e6e6e6;
+    margin-top:150px;
+    }
+    #bottom_link a{
+    display:inline-block;
+    text-decoration: none;
+    font-size: 12px;
+    color:#666;
+    font-family: 'microsoft Yahei';
+    }
+    #one a{
+    float: left;
+    margin: 0 5px;
+    }
+    #bottom_link span{
+    font-size: 12px;
+    color:#666;
+    }
+    #one span,#two span{
+    float: left;
+    }
+    #two{
+    clear:both;
+    margin-top:25px;
+    }
+    #two a{
+    float:left;
+    margin: 0 5px;
+    }
+    #three{
+    clear:both;
+    }
+    #three a{
+    float: left;
+    margin-top:10px;
+    margin-left: 3px;
+    }
+     #three img{
+     float:left;
+    margin-top:10px;
+    }
+    #four{
+    clear:both;
+    }
+    #four{
+    float: left;
+    margin-top: 5px;
+    }
+    </style>
+  </head>
+  
+  <body>
+    <div id="all">
+	    <div align="center">
+		    <div id="header">
+		    <div id="header_content">
+			    <div class="header_left"><!-- 头部左半部分 -->
+				    <a href="https://www.financesn.com/snfp/person/index.htm" id="personal">个人</a>
+				    <a href="https://www.financesn.com/snfp/merchant/index.htm" id="business">企业</a>
+				    <div id="jinrongApp">
+					    <a target="_blank" href="http://respay.suning.com/eppClientApp/html/mobile/index.html" class="blurTag">
+						    <b ><img src="image3/QQ截图20170825203156.png" id="phone1"/><img src="image3/QQ截图20170825203240.png" id="phone2"  style="display: none;"/></b>
+						    <span>苏宁金融App</span>
+						    <img src="image3/QQ截图20170825205333.png"  id="down" />
+					    </a>
+					    <div id="app-pop" style="display: none;"><!-- 头部前半部分隐藏内容 -->
+						    <img src="image3/149163520782217723.jpg" width="114px" height="114px"/>
+						    <a target="_blank" href="https://respay.suning.com/eppClientApp/html/mobile/index.html">下载苏宁金融APP</a>
+					    </div>
+				    </div>
+			    </div>
+			    <div class="header_right"><!-- 头部后半部分 -->
+				    <p class="header_right_1">
+					    <a href="javaScript:void(0)" id="a1">登录</a>
+					    <a href="javaScript:void(0)">注册</a>
+				    </p>
+				    <p class="header_right_2">
+				    	<a href="javaScript:void(0)">关于我们</a><span>|</span>
+				    </p>
+				    <div class="header_right_3">
+				    	<a href="javaScript:void(0)" class="blurTag">服务中心  <img src="image3/QQ截图20170825205333.png"  id="down1"/></a><span>|</span>
+				        <div id="sever" style="display: none;"><!-- 头部后半部分隐藏内容 -->
+					         <p>金融服务热线 :<b id="num">95177</b></p>
+					         <a href="javascript:void(0)" id="onlinepeople"><b id="online"></b>在线客服</a>    
+				        </div>
+				    </div>
+				    <a href="javaScript:void(0)" class="header_right_4">帮助中心</a><span>|</span>
+				    <a href="javaScript:void(0)" class="header_right_5">提意见</a>
+		    	</div>
+	    		</div>
+		    </div>
+		    <div id="logoAll"><!-- logo整体 -->
+			    <div id="logo_content"><!-- logo整体内容 -->
+				    <a href="javaScript:void(0)" id="logo"><img src="image3/001.png" /></a>
+				    <a href="javaScript:void(0)" id="logoRight"><img src="image3/002.jpg"></img></a>
+				    <div id="myCount"><!-- 右边   我的账户 -->
+					    <a href="javaScript:void(0)">
+					    <img src="image3/fin-bg.jpg"/>
+					    <span>我的账户&gt;</span>
+					    </a>
+				    </div>
+				    <div id="logo_content_daohang"><!-- logo导航 -->
+					    <ul>
+						    <li>
+						    	<a href="javaScript:void(0)">首页</a>
+						    </li>
+						    <li>
+						    	<a href="javaScript:void(0)">投资理财</a>
+						    </li>
+						    <li>
+						    	<a href="javaScript:void(0)">保险</a>
+						    </li>
+						    <li>
+						    	<a href="javaScript:void(0)">众筹</a>
+						    </li>
+						    <li>
+						    	<a href="javaScript:void(0)">贷款</a>
+						    </li>
+						    <li>
+						    	<i></i>
+						    	<a href="javaScript:void(0)" style="color: #39f;">生活服务</a>
+						    	<span >|</span>
+						    </li>
+						    <li>
+						    	<a href="javaScript:void(0)">财富咨询</a>
+						    </li>
+					    </ul>
+				    </div>
+			    </div>
+		    </div>
+		    <div id="bluedaohang"><!-- 蓝色导航条 -->
+			    <ul>
+				    <li><a href="javaScript:void(0)">首页</a></li>
+				    <li><a href="javaScript:void(0)" class="subAdd">手机充值</a></li>
+				    <li><a href="javaScript:void(0)">还款</a></li>
+				    <li><a href="javaScript:void(0)">转账</a></li>
+				    <li><a href="javaScript:void(0)">水电煤</a></li>
+				    <li><a href="javaScript:void(0)">加油卡</a></li>
+				    <li><a href="javaScript:void(0)">固定宽带</a></li>
+				    <li><a href="javaScript:void(0)">有线电视</a></li>
+				    <li><a href="javaScript:void(0)">校园一卡通</a></li>
+			    </ul>
+		    </div>
+		    <div id="subTag"><!-- 选项卡 -->
+			    <div id="subTag_right">
+			    	<a href="javaScript:void(0)">充值记录</a>
+			    </div>
+			    <div id="subTag_left">
+				    <ul id="Tag">
+					    <li class="one">手机充值</li>
+					    <li><em></em></li>
+					    <li class="title">流量充值</li>
+				    </ul>
+			    </div>
+		    </div>
+		    <div id="guangbo"><!-- 广播提示语 -->
+			    <a href="javaScript:void(0)" class="closeall"><img src="image3/clear-input.jpg"/></a>
+			    <i class="laba"></i><!-- 小喇叭 -->
+			    <a href="javaScript:void(0)" id="laba_word">手机端专享：新人礼话费充99立减5元</a>
+		    </div>
+		    <div id="phoneInfo"><!-- 充值信息 -->
+		    <ul>
+			    <li>
+				    <span class="subColor">
+					    <i class="mr1"></i>
+					    <a>填写充值信息</a>
+				    </span>
+			    </li>
+			    <li><hr></li>
+			    <li>
+				    <span>
+					    <i class="mr2"></i>
+					    <a>确认充值信息</a>        
+				    </span>
+			    </li>
+			    <li><hr></li>
+			    <li>
+				    <span>
+					    <i class="mr3"></i>
+					    <a>支付</a> 
+				    </span>
+			    </li>
+			    <li><hr></li>
+			    <li>
+				    <span>
+					    <i class="mr4"></i>
+					     <a>充值</a>
+				    </span>
+			    </li>
+		    </ul>
+		    </div>
+		    <div id="fairChoose"><!-- 手机充值内容整体 -->
+			    <div id="fairChoose_content">
+				    <div id="fairChoose_main">
+					    <div id="table">
+					    	<label>手机号码 :</label>
+					    </div>
+					    <div id="table_text">
+						    <input type="text" placeholder="支持全国移动/联通/电信/苏宁互联">
+						    <div id="table_history">
+						    	<i></i>
+						    <span>历史号码</span>
+					    	</div>
+				    	</div>
+			    	<div id="moneyChose"><!-- 价格选择 -->
+					    <div id="firstMoney"><!-- 价格选择第一行 -->
+						    <div id="title2">
+						    	<label>充值面值 :</label>
+						    </div>
+						    <div id="firstLine">
+							    <a href="javaScript:void(0)" class="subMoney">100元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">200元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">300元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">500元</a>
+						    </div>
+					    </div>
+					     <div id="secondMoney"><!-- 价格选择 第二行-->
+						    <div id="title3">
+						    	
+						    </div>
+						    <div id="secondLine">
+							    <a href="javaScript:void(0)" class="blurMoney">50元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">30元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">20元</a>
+							    <a href="javaScript:void(0)" class="blurMoney">10元</a>
+						    </div>
+					    </div>
+			    	</div>
+			    	<div id="price"><!-- 提醒价格 -->
+				    	<div id="title4">
+							<label>价格 ：</label>	    	
+							</div>
+							<div id="price_info">
+								<p>99.80-100.00</p>
+							</div>
+			    	</div>
+			    	<div id="button"><!-- 立即充值  按钮 -->
+				    	<a href="javaScript:void(0)">立即充值</a>
+			    	</div>
+		    	</div>
+			    </div>
+		    </div>
+		    <div id="bottom">
+		    <div id="problem"><!-- 常见问题 -->
+		          <div id="title_bottom">常见问题</div>
+		    </div>
+		    <div id="problem_tilte"><!-- 常见问题清单 -->
+			    <dl>
+				    <dt>
+					    <div class="detail"></div>
+					    <div class="titles">手机充值是否有充值限制？</div>
+				    </dt>
+				    <dd>
+                    	答：单个账号单日充值总额不超过1000元，单账号单月充值总额不超过1500元，单月单手机号码充值总额不超过1500元。
+				    </dd>
+				    
+				    <dt>
+					    <div class="detail"></div>
+					    <div class="titles">手机充值后如何获取发票？</div>
+				    </dt>
+				    <dd>
+				                     答：用户充值成功后，可到当地运营商营业厅打印上月的实际消费发票。因各运营商规定不同，充值前请咨询当地运营商关于发票获取的政策，其中电信话费充值为卡直充，中国电信不提供话费充值发票。对于运营商反馈无法打印发票的情况，苏宁金融可协助提供部分省份、运营商、面额的定额发票，邮寄费用须用户自行承担。
+				    </dd>
+				    
+				    <dt>
+					    <div class="detail"></div>
+					    <div class="titles">充错手机号码怎么办？</div>
+				    </dt>
+				    <dd>
+				    	答：充值订单一经提交不可取消或修改，若填错号码则无法退款，请确认充值信息无误。
+				    </dd>
+				 </dl>
+				 <a href="javascript:void(0)" id="more">更多相关帮助 》</a>
+		    </div>
+		    <div id="changeCode">
+		    	<img src="image3/QQ截图20170830154524.png"/>
+		    </div>
+	    </div>
+	     <div id="bottom_link">
+	     <div id="bottom_box">
+		    <div id="one">
+		    <a href="javascript:void(0)">诚聘英才</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">联系我们</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">用户体验提升计划</a>
+		    </div>
+		    <div id="two">
+		    <a href="javascript:void(0)">苏宁云商</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">苏宁互联</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">苏宁易购</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">易付宝</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">PPTV</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">红孩子</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">缤购</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">乐购仕</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">苏宁物流</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">苏宁美国</a>
+		    <span>|</span>
+		    <a href="javascript:void(0)">苏宁香港</a>
+		    </div>
+		    <div id="three">
+		    <a>金融机构 ：</a>
+		     <img src="image3/bank-list.png"/>
+		    </div>
+		    <div id="four">
+		    <a style="color: #999;">Copyright © 2002-2017，苏宁金融服务（上海）有限公司版权所有 沪ICP备17023493号</a>
+		    </div>
+		    </div>
+		</div>   
+    	</div>
+    </div>
+  </body>
+</html>

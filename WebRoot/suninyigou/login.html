@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>login.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        //先初始化样式，且实现表单切换
+    	$("#formTag a:first").attr("class","subTag").siblings().attr("class","blurTag")
+        $("#formTag a").click(function(){//实现表单切换
+        	$(this).attr("class","subTag").siblings().attr("class","blurTag");
+        	$(this).find("i").show().closest("a").siblings().find("i").hide();
+        	$("#changeTag>div").eq($(this).index()).show().siblings().hide();
+        });
+        
+    	//初始化样式: 对输入框 添加 blur样式
+    	$("[type='text']").attr("class","blurText");
+    	//设置获得焦点事件和样式
+    	$("#account input,#password input").focus(function(){
+    		if($(this).val()==this.defaultValue){
+    			$(this).val("").attr("class","subText");
+    			$(this).siblings("b").hide().siblings("i").show();
+    			$(this).parent().index()==1?$(this).attr("type","password"):"";
+    		}
+    	}).blur(function(){
+    		if($(this).val()==""){//用户未输入,恢复默认提醒文字
+    			$(this).val(this.defaultValue).attr("class","blurText");
+    		    $(this).siblings("i").hide().siblings("b").show();
+    		}
+    	});
+    	
+    	//账号框表单验证
+    	var accounCheckRS=false;
+    	var passCheckRS=false;
+    	$("#account input").blur(function(){
+    		var patt=/^[a-zA-Z][a-zA-Z0-9]{5,9}$/;
+    		if($(this).val()==this.defaultValue){//判断当光标移出，文本框等于默认文字时，错误提示框隐藏
+    			$("#accountError").hide();
+    			accounCheckRS=false;
+    		}else{//将输入的文字与规则作比较
+    			if(patt.test($(this).val())){
+    			$("#accountError").hide();
+    			accounCheckRS=true;
+    		}else{//不满足
+    			$("#accountError").show().html("账号: 不符合规定");
+    			accounCheckRS=false;
+    		}
+    		}
+        });
+    	$("#account input").focus(function(){//判断当光标移入时，错误提示框隐藏
+    		$("#accountError").hide();
+    	});
+    	
+    	//密码框表单验证
+    	$("#password input").blur(function(){
+    		var patt=/^[0-9]{5,10}$/;
+    		if($(this).val()==this.defaultValue){//判断当光标移出，文本框等于默认文字时，错误提示框隐藏
+    			$("#passwordError").hide();
+    			passCheckRS=false;
+    		}else{
+    			if(patt.test($(this).val())){
+    			$("#passwordError").hide();
+    			passCheckRS=true;
+    		}else{//不满足
+    			$("#passwordError").show().html("数字组成,5-10位");
+    			passCheckRS=false;
+    		}
+    		}
+    	});
+    	$("#password input").focus(function(){
+    		$("#passwordError").hide();
+    	});
+    	
+    	//对提交按钮进行验证
+    	$("#submit").click(function(){
+    		if(!(passCheckRS&&accounCheckRS)){
+    			$("#passwordError").html("").hide();
+    			$("#accountError").show().html("账号或者密码不正确");
+    			return false;
+    		}
+    	});
+    	
+    	//实现悬浮在二维码上，出现手机App
+    	$("#twoways").hover(function(){
+    		$("#scanCode img").animate({"right":70},200);
+    		$("#phoneApp").animate().delay(200).fadeIn(100);
+    	},function(){
+    		$("#scanCode img").animate({"right":0},200);
+    		$("#phoneApp").fadeOut(50);
+    	});
+    });
+    /*function key(){
+    	var keycode=Event.keyCode;
+    	if()
+    }*/
+    </script>
+    <style type="text/css">
+    *{/*清除整体样式 */
+    margin: 0px;
+    padding:0px;
+    border:0px;
+    }
+    #all{/*控制整体的最小宽高 */
+    min-width: 1300px;
+    min-height: 900px;
+    }
+    /*---------------头部内容开始--------------- */
+    
+    #head{/*控制整个头部*/
+    height:100px;
+    width: 970px;
+    position: relative;
+    }
+    #head a img{
+    margin-top: 20px;
+    margin-right:15px;
+    float: left;
+    }
+    #head_Info{/*--头部提醒信息--*/
+    width:783px;
+    border:1px #fecd66 solid;
+    color:#333;
+    font-size:12px;
+    background-color: #fefff1;
+    line-height: 16px;
+    padding: 4px 6px;
+    float: left;
+    margin-right:-100px;
+    margin-top: 40px; 
+    }
+    #head_suggest a b{
+    float: left;
+    background-image: url("image1/sprite.png");
+    width:18px;
+    height:18px;
+    background-position: -67px -27px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right:130px;
+    }
+    #head_suggest a{
+    color:#333;
+    font-size: 12px;
+    text-decoration:none;
+    font-family: simsun;
+    position: absolute;
+    right:10px;
+    top:75px;
+    }
+    #head_suggest a:HOVER {
+	color:#f60;
+    }
+    /*----------------头部内容结束--------------- */
+    
+    /*----------------身体部分内容开始------------ */
+    
+    #main{/*控制整个身体的背景*/
+    background-image: url("image1/beijing.jpg");
+    width:100%px;
+    height:570px;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+    #main_div1{
+    width: 970px;
+    height: 100%;
+    }
+    #main_form{/*控制整个表单*/
+    width: 360px;
+    height: 412px;
+    background-color: #fff;
+    float:right;
+    margin-top:50px;
+    }
+    #formTag a span{/*控制选项卡的样式*/
+    display:inline-block;
+    width:180px;
+    line-height:20px;
+    border-right:1px solid #eee;
+    margin-top:15px;
+    font-family:"Microsoft Yahei";
+    text-align:center;
+    }
+    #formTag a{
+    text-decoration: none;
+    display:inline-block;
+    width:179px;
+    height:50px;
+    float:left;
+    border-bottom:1px solid #eee;
+    }
+    #formTag a:HOVER{
+    color:#f60;
+    }
+    #formTag i{
+    display:inline-block;
+    width: 70px;
+    height: 4px;
+    background-color:f60;
+    margin-top: 11px;
+    }
+    
+    .subTag{ /*选项卡获得焦点的样式*/
+    color:#f60;
+    }
+    .blurTag{/*选项卡失去焦点的样式*/
+    color:#333;
+    }
+    
+    /*-------------第一部分二维码登录开始------------*/
+    
+    #scanCodeContent{/*扫描二维码登录*/
+    width:360px;
+    height:231px;
+    margin-top: 50px;
+    padding-top:30px;
+    position: relative;
+    }
+    #scanCode{
+    height: 156px;
+    padding: 20px 34px 0;
+    position: relative;
+    margin-bottom: 17px;
+    }
+    #scanCode img{
+    width:141px;
+    height:141px;
+    position: relative;
+    }
+    #phoneApp{/*手机大图*/
+    position:absolute;
+    top:10px;
+    right:30px;
+    width: 133px;
+    height: 200px;
+    background-image: url("image1/scan.png");
+    background-repeat:no-repeat;
+    }
+    #openApp{/*控制App登录整体*/
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    width:100%;
+    height:18px;
+    position:absolute;
+    bottom:20px;
+    left:95px;
+    }
+    #openApp i{/*App登录图标*/
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("image1/sprite.png");
+    background-position: -164px -67px;
+    background-repeat: no-repeat;
+    float: left;
+    padding-left: 10px;
+    }
+    #openApp span{/*App登录文字*/
+    display: inline-block;
+    float: left;
+    color:#333;
+    text-align: center;
+    } 
+    #openApp a{/*App登录链接*/
+    display: inline-block;
+    float: left;
+    color:#f60;
+    text-align: center;
+    text-decoration: none;
+    }     
+    #openApp a:HOVER {
+	text-decoration:underline;
+    }
+    /*-------------第一部分二维码登录结束------------*/
+    
+    /*-------------第二部分账号登陆开始------------*/
+    #accountAll{/*控制账号登陆总体*/
+    width:312px;
+    height:242px;
+    border-top:1px #eee solid;
+    border-bottom:1px #fff solid;
+    font-family: "Microsoft Yahei";
+    margin-top: 50px;
+    margin-bottom: 17px;
+    position: relative;
+    }
+    #accountError{/*设置账号错误提醒框的样式*/
+    width:290px;
+    height:18px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: #323232;
+    background: #fff0f0;
+    border: 1px solid #ff3c3c;
+    margin: 8px 0;
+    }
+    #passwordError{/*设置密码错误提醒框的样式*/
+    width:290px;
+    height:18px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: #323232;
+    background: #fff0f0;
+    border: 1px solid #ff3c3c;
+    position:absolute;
+    top:145px;
+    left:1px;
+    }
+    #account input,#password input {/*设置文本框和密码框*/
+    width:310px;
+    height:36px;
+    border: 1px solid #ddd;
+    line-height:36px;
+    font-size: 14px;
+    padding-left: 36px;
+    }
+    #account{
+    position:absolute;
+    top:40px;
+    left:1px;
+    }
+    #password{
+    position:absolute;
+    top:98px;
+    left:1px;
+    }
+    #account span,#password span{/*设置文本框中 X 的样式*/
+    display:inline-block;
+    width: 32px;
+    height: 36px;
+    background-image:url("image1/sprite.png"); 
+    background-position: -82px -108px;
+    }
+    #account span{
+    position: absolute;
+    top:0;
+    right:0;
+    }
+    #password span{
+    position: absolute;
+    top:0;
+    right:0;
+    }
+    .subText{/*设置文本框文字获得焦点的样式*/
+    color:#333; 
+    outline: none;
+    }
+    .blurText{/*设置文本框文字失去焦点的样式*/
+    color:#eee;
+     }
+    #account b,#password b,#account i,#password i{
+    background-image: url("image1/sprite.png");
+    background-repeat: no-repeat;
+    display:inline-block;
+    width:36px;
+    height:36px;
+    }
+    
+    #account b{/*设置文本框小图标失去焦点的样式*/
+    background-position:-123px -67px ; 
+    position: absolute;
+    top:0px;
+    }
+    #password b{/*设置密码框的小图标失去焦点的样式*/
+    background-position: 0px -108px;
+    position: absolute;
+    top:0px;
+    }
+    #account i{/*设置文本框小图标获得焦点的样式*/
+    background-position:-82px -67px ; 
+    position: absolute;
+    top:0px;
+    }
+    #password i{/*设置密码框的小图标获得焦点的样式*/
+    background-position: -40px -67px;
+    position: absolute;
+    top:0px;
+    }
+    #login-help{/*控制短信验证码登录那一行整体*/
+    width:360px;
+    position:absolute;
+    top:177px;
+    left:1px;
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    }
+    #messageLogo b{/*设置短信验证码的图标*/
+    background-image: url("image1/sprite.png");
+    background-repeat: no-repeat;
+    display:inline-block;
+    width:13px;
+    height:16px;
+    background-position: 0px -149px;
+    line-height:35px;
+    float:left;
+    }
+    #messageLogo{/*设置短信验证码字的样式*/
+    color:#333;
+    text-decoration: none;
+    float:left;
+    display:inline-block;
+    }
+    #messageLogo:HOVER{/*设置短信验证码 字 悬浮的样式*/
+    color:#f60; 
+    }
+    #message{/*设置 忘记密码 的样式*/
+    color:#333;
+    text-decoration: none;
+    margin-left: 108px;
+    display:inline-block;
+    }
+    #message:HOVER{/*设置 忘记密码 悬浮 的样式*/
+    color:#f60;
+	text-decoration:underline; 
+    }
+    #submit{/*设置 登录按钮  的样式*/
+    clear:both;
+    display: block;
+    width:312px;
+    line-height:40px;
+    background-color:#f60;
+    border-radius:2px;
+    font-size: 20px;
+    color:#fff;
+    letter-spacing:2px;
+    font-weight:700;
+    text-align: center;
+    position: absolute;
+    bottom:-2px;
+    left:0px;
+    cursor: hand;
+    text-decoration: none;
+    }
+    #submit:HOVER{/*设置 登录按钮悬浮  的样式*/
+    color: #fff;
+    background:#f50;
+    }
+    
+    /*-------------第二部分账号登陆结束-------------*/
+    
+    /*-------------主页面底部固定内容--------------*/
+    #Info{/*免费注册 有惊喜*/
+    color: #333;
+    font-size:12px;
+    font-family: "Microsoft Yahei";
+    text-decoration: none;
+    display:inline-block;
+    margin-top:-10px;
+    }
+    #Info:HOVER {
+	color:#f60;
+	text-decoration:underline; 
+    }
+    #form_bottom{/*控制主页面底部*/
+    width:310px;
+    height:43px;
+    border-top:1px solid #ddd;
+    margin-top:40px;
+    font-family: "Microsoft Yahei";
+    }
+    #allLogin{
+    display:inline-block;
+    width: 128px;
+    margin-top:-9px;
+    color: #999;
+    font-size:12px;
+    background: #fff;
+    text-align: center;
+    }
+    #qq,#weixin,#yifubao{/*主页面底部多种登录方式*/
+    background-image: url("image1/sprite.png");
+    background-repeat:no-repeat;
+    display:inline-block;
+    width: 16px;
+    height: 16px; 
+    }
+    #qq{
+    background-position:-90px -27px;
+    }
+    #weixin{
+    background-position:-161px -108px; 
+    }
+    #yifubao{
+    background-position:-119px -108px;
+    }
+    #loginWays span{/*主页面底部"|"样式*/
+    color:#dedcd5;
+    font-size: 12px;
+    }
+    #loginWays a{/*主页面底部a样式*/
+    color:#333;
+    font-size: 12px;
+    text-decoration: none;
+    }
+    #loginWays a:HOVER{
+    text-decoration: underline;
+    color:#f60;
+    }
+    #qq,#weixin,#yifubao,#loginWays a,#loginWays span{
+    float: left;
+    padding-left:5px;
+    }
+    #loginWays{
+    margin-top: 10px;
+    }
+    /*-------------底部内容------------*/
+    #bottom{/*控制底部整体内容*/
+    width: 990px;
+    min-width: 990px;
+    font-family: "Microsoft Yahei";
+    font-size:12px;
+    margin-top: 20px;
+    }
+    #bottom_one span,#bottom_two span{
+    color:#333;
+    }
+    #bottom a{
+    text-decoration: none;
+    }
+    #bottom_one a,#bottom_two a{
+    color: #333;
+    display:inline-block;
+    line-height: 25px;
+    padding: 0px 7px; 
+    }
+    #bottom_one a:HOVER,#bottom_two a:HOVER{
+    color:#f60;
+	text-decoration:underline;  
+    }
+    #bottom_three{
+    margin-top: 5px;
+    margin-bottom:8px;
+    color:#999;
+    }
+    #bottom_four a{
+    padding:5px;
+    }
+    </style>
+  </head>
+  
+  <body>
+    <div id="all" align="center"> <!--控制整体内容居中 -->
+	    <div id="head" align="left"><!--头部内容 -->
+		    <a href="http://www.suning.com"><img src="image1/logo.png"/></a> <!--logo -->
+		    <div id="head_Info"><!--头部提醒信息 -->
+		                为确保您账户的安全及正常使用，依《网络安全法》相关要求，6月1日起会员账户需绑定手机。如您还未绑定，请尽快完成，感谢您的理解及支持！
+		    </div>
+		    <!--head底部提意见 -->
+		    <div id="head_suggest">
+		       <a href="javascript:void(0)"><b></b>我想对“登录”提意见</a>
+		    </div>
+	    </div>
+	    
+	    <!--身体部分 -->
+	    <div id="main">
+		    <div id="main_div1"><!--控制主要内容 -->
+			    <div id="main_form"><!--控制表单整体内容 -->
+			    
+				   <div id="formTag"><!--表单选项卡 -->
+					    <a href="javascript:void(0)"><span>扫码登录</span><i></i></a>
+					    <a href="javascript:void(0)"><span>账户登录</span><i style="display: none;"></i></a>
+			          </div>
+			         <div id="changeTag"><!--两种登录 -->
+			         <div id="scanCodeContent" ><!--扫码登录部分 -->
+				        <div id="twoways">
+					        <div id="scanCode" ><img src="image1/qrLoginUuidGenerate.png"/></div><!--二维码图片 -->
+					        <div id="phoneApp" style="display: none"></div><!--手机App大图 -->
+				        </div>
+				        <div id="openApp">
+					        <div><i></i></div><!--App登录图标 -->
+					        <span>打开</span>
+					        <a href="http://sale.suning.com/syb/20120419xsjkhd/index.html">苏宁易购APP</a><!-- App登录链接 -->
+					        <span>扫码登录</span>
+				        </div>
+				  </div>
+				  
+				  <div id="accountAll" style="display: none;"><!--账号登录部分 -->
+					  <div id="accountError" style="display: none;"></div><!--账号错误提醒框 -->
+					  <form action="#">
+						  <div id="account"><b></b><i style="display: none;"></i><input type="text" value="用户名/手机/邮箱/门店会员卡号"><span style="display: none;" onkeydown="key()"></span></div>
+						  <div id="password"><b></b><i style="display: none;"></i><input type="text" value="密码"><span style="display: none;" onkeydown="key()"></span></div>
+						  <div id="passwordError" style="display: none;"></div><!--密码错误提醒框 -->
+						  <div id="login-help">
+							  <a href="javascript:void(0)" id="messageLogo"><b></b>&nbsp;短信验证码登录</a>
+							  <a href="javascript:void(0)" id="message">忘记密码？</a><br>
+					      </div>
+					      <a href="javascript:void(0)javascript:void(0)" id="submit">登录</a>
+					  </form>
+				  </div>
+				  </div> 
+				  <div><!--免费注册 有惊喜 -->
+				    	<a id="Info" href="javascript:void(0);">免费注册 有惊喜 &gt;</a>
+				  </div>
+				  <div id="form_bottom"><!--主页面底部 -->
+					  <span id="allLogin">使用以下账号登录</span>
+					  <div id="loginWays">
+						  <a href="javascript:void(0)"><i id="qq"></i>QQ</a><span>|</span>
+						  <a href="javascript:void(0)"><i id="weixin"></i>微信</a><span>|</span>
+						  <a href="javascript:void(0)"><i id="yifubao"></i>易付宝</a><span>|</span>
+						  <a href="javascript:void(0)">门店会员卡</a><span>|</span>
+					  </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="bottom">
+			<div id="bottom_one">
+				<a href="http://www.suning.cn/" target="_blank">苏宁云商</a><span>|</span>
+				<a href="http://10035.suning.com/" target="_blank" name="public0_none_wb_yqlj0102" rel="nofollow">苏宁互联</a><span>|</span>
+				<a href="http://jinrong.suning.com/" target="_blank">苏宁金融</a><span>|</span>
+				<a href="https://passport.suning.com/ids/trustLogin?sysCode=epp&amp;targetUrl=https://pay.suning.com/epp-epw/login/login.action"  target="_blank">易付宝</a><span>|</span>
+				<a href="http://www.pptv.com?rcc_id=snyg" target="_blank" >PPTV</a><span>|</span>
+				<a href="http://redbaby.suning.com/" target="_blank">红孩子</a><span>|</span>
+				<a href="http://binggo.suning.com/" target="_blank">缤购</a><span>|</span>
+				<a href="http://laox.suning.com/" target="_blank">乐购仕</a><span>|</span>
+				<a href="http://wuliu.suning.com/" target="_blank">苏宁物流</a><span>|</span>
+				<a href="http://usa.suning.com/" target="_blank">苏宁美国</a><span>|</span>
+				<a href="http://hk.suning.com/" target="_blank">苏宁香港</a><span>|</span>
+				<a href=" http://m.suning.com/" target="_blank">手机苏宁</a></div>
+			<div id="bottom_two">
+				<a href="http://club.suning.com/hr/aboutus.html" target="_blank">关于苏宁易购</a><span>|</span>
+				<a href="http://help.suning.com/page/id-469.htm" target="_blank">联系我们</a><span>|</span>
+				<a href="http://careers.cnsuning.com/" target="_blank">诚聘英才</a><span>|</span>
+				<a href="http://sop.suning.com/" target="_blank">供应商入驻</a><span>|</span>
+				<a href="http://union.suning.com/" target="_blank">苏宁联盟</a><span>|</span>
+				<a href="http://zb.suning.com/" target="_blank">苏宁招标</a><span>|</span>
+				<a href="http://union.suning.com/aas/links.html">友情链接</a><span>|</span>
+				<a href="http://help.suning.com/page/id-281.htm" target="_blank">法律申明</a><span>|</span>
+				<a href="http://ued.suning.com/survey/" target="_blank">用户体验提升计划</a><span>|</span>
+				<a href="http://mrs.suning.com/mrs-web/stockholder/check.htm" target="_blank">股东会员认证</a>
+			</div>
+			<div id="bottom_three">
+				Copyright? 2002-2017 ，苏宁云商集团股份有限公司版权所有
+				<a href="http://www.miitbeian.gov.cn" target="_blank" style="color:#999">苏ICP备10207551号-4</a>
+				<a href="http://img.suning.cn/public/v3/images/SUB1-20130131.png" target="_blank" style="color:#999">苏B1-20130131</a
+				<a href="http://img.suning.cn/public/v3/images/SUB2-20130376.png" target="_blank" style="color:#999">苏B2-20130376</a>
+				<a href="http://img.suning.cn/public/v3/images/SUB2-20130391.png" target="_blank" style="color:#999">苏B2-20130391</a>
+		                    出版物经营许可证新出发苏批字第A-243号
+			</div>
+			<div id="bottom_four">
+				<a href="https://search.szfw.org/cert/l/CX20111018000608000610" target="_blank">
+				<img height="24" width="76" alt="诚信网站" src="image1/chengxin.png">
+				</a>
+				<a href="http://image.suning.cn/uimg/snnet/snnetImg/142891196680527240.jpg" target="_blank">
+				<img height="24" width="76" alt="中国联通授权网络经营代理商" src="image1/unicom.png">
+				</a>
+				<a href="http://img.suning.cn/public/v3/images/dianxin_content.jpg" target="_blank">
+				<img height="24" width="76" alt="中国电信授权网络经营代理商" src="image1/dianxin.jpg" ></a>
+				<a href="http://www.jsgsj.gov.cn:60101/keyLicense/verifKey.jsp?serial=320000163820130117100000009630&amp;signData=0+ADYt839gp1EiqiZXnsxsyOnpO32Wg4sFePaiV9+NtTV/XCAMXGzT/AOgycGMm0EjsR/Ot661M7h9GeStpA8QyJTs1Ip1K/CSNaemthn7f1NjI03x1E6v9ZRT+3M60WZIGLBEjFs5XMliufNz1cJlYDQrTZvaZbHyJ2KzgJB4Y=" target="_blank">
+				<img height="24" width="76" alt="电子营业执照" src="image1/dianzi.png">
+				</a>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

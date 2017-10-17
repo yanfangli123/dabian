@@ -1,0 +1,2492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>mainpage.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    //最图片数和当前图片位置 作为全局,供下次执行函数时使用
+    var allImg=8;
+    var nowImg=1;
+    var a=1;
+    $(function(){
+    	//初始化样式:
+    	$("#clickSel_div a:first").attr("class","sel_a").siblings().attr("class","blur_a");
+    	//左右切换按钮事件
+    	$("#backImg,#nextImg").click(leftRightBtDeal);
+    	//点选圆圈按钮 切换
+    	$("#clickSel_div a").mouseover(function(){
+    		nowImg=$(this).index()+1;
+    		//修改id=showImg 标签的src
+    		$("#showImg").attr("src","image5/p"+nowImg+".jpg");
+    		//更改轮播背景
+    		$("#lunbobeijing").attr("class","bgcolor"+nowImg);
+    		//同步圆点状态
+    		$(this).attr("class","sel_a").siblings().attr("class","blur_a");
+    	});
+    	//定时切换
+    	window.setInterval("leftRightBtDeal(1)",3000);
+    	
+    	
+        //最上部导航栏部分
+    	 $("#firstbox,#twobox,#fourbox,#fivebox,#eightbox").hover(function(){//实现网站导航  商家入驻  我的订单 我的易购   客户服务 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    		 $(this).children("a").children("img").attr("class","subdown");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    		 $(this).children("a").children("img").attr("class","blurdown");
+    	 });
+    	 $("#close").click(function(){//实现点击X号关闭显示内容
+    		 $(this).closest("div").hide();
+    	 });
+    	 $("#sixbox").hover(function(){//实现 购物车 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    		 $("#down5").attr("class","subdown");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    		 $("#down5").attr("class","blurdown");
+    	 });
+    	 $("#tenbox").hover(function(){//实现 手机苏宁 下的内容显示与隐藏
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox1");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox1");
+    	 });
+    	 
+    	 //$(".lunbobox1:first,.lunbobox2:first").css("z-index","1").find("div").show();
+    	 
+    	 //实现搜索框固定
+    	 $(window).scroll(function(){
+    		var top=$(this).scrollTop();
+    		 if(top-400<0){
+    			 $("#fix_top").hide();
+    		 }else{
+    			 $("#fix_top").show();
+    		 }
+    	});
+    	 
+    	  
+    	  
+    	  //实现固定顶层全部商品的显示
+    	 $("#allshopSort_content1").hide();//初始化让商品分类隐藏
+    	 $("#alls1,#allshopSort_content1,#list_children1 img").hover(function(){
+    		$("#allshopSort_content1").toggle(); 
+    	 });
+    	  
+    	 $("#list_children1 img").hide(); //初始化
+    	 $("#list1 a").attr("class","blurlist");
+    	 $("#list_children1 img").hover(function(){
+    		 $("#list_children1 img").eq($(this).index()).show().siblings().hide();
+    		 $("#list1 li").eq($(this).index()).attr("class","subAllshop").siblings().attr("class","blurAllshop")
+    	     $("#list1 li").eq($(this).index()).find("a").attr("class","sublist");
+    	 },function(){
+    		 $("#list_children1 img").hide();
+    		 $("#list1 li").attr("class","blurAllshop");
+    		 $("#list1 li").eq($(this).index()).find("a").attr("class","blurlist");
+    	 });
+    	 
+    	 $("#list1 li").hover(function(){
+    		 $("#list_children1 img").eq($(this).index()).show().siblings().hide();
+    		 $(this).attr("class","subAllshop").siblings().attr("class","blurAllshop")
+    	     $(this).find("a").attr("class","sublist");
+    	 },function(){
+    		 $("#list_children1 img").hide();
+    		 $("#list1 li").attr("class","blurAllshop");
+    		 $(this).find("a").attr("class","blurlist");
+    	 });
+    	 
+    	 //实现 固定顶层 购物车 下的内容显示与隐藏
+    	 $("#fixbox").hover(function(){
+    		 $(this).children("div").slideDown(100);
+    		 $(this).attr("class","subBox2");
+    		 $("#downs").attr("class","subdown");
+    	 },function(){
+    		 $(this).children("div").slideUp(100);
+    		 $(this).attr("class","blurBox2");
+    		 $("#downs").attr("class","blurdown");
+    	 });
+    	 
+    	 
+    	 //实现全部商品的显示
+    	 $("#list_children img").hide(); //初始化
+    	 $("#list a").attr("class","blurlist");
+    	 $("#list_children img").hover(function(){
+    		 $("#list_children img").eq($(this).index()).show().siblings().hide();
+    		 $("#list li").eq($(this).index()).attr("class","subAllshop").siblings().attr("class","blurAllshop")
+    	     $("#list li").eq($(this).index()).find("a").attr("class","sublist");
+    	 },function(){
+    		 $("#list_children img").hide();
+    		 $("#list li").attr("class","blurAllshop");
+    		 $("#list li").eq($(this).index()).find("a").attr("class","blurlist");
+    	 });
+    	 
+    	 $("#list li").hover(function(){
+    		 $("#list_children img").eq($(this).index()).show().siblings().hide();
+    		 $(this).attr("class","subAllshop").siblings().attr("class","blurAllshop")
+    	     $(this).find("a").attr("class","sublist");
+    	 },function(){
+    		 $("#list_children img").hide();
+    		 $("#list li").attr("class","blurAllshop");
+    		 $(this).find("a").attr("class","blurlist");
+    	 });
+    	 
+     });
+       
+        //轮播图点击切换
+    	var leftRightBtDeal=function(actionID){
+   		var actionType=actionID==1?"nextImg":$(this).attr("id");
+   		if("backImg"==actionType&&nowImg==1){
+   			nowImg=allImg+1;
+   		}else if("nextImg"==actionType&&nowImg==allImg){
+   			nowImg=0;
+   		}
+   		if("backImg"==actionType){//上一张
+   			nowImg--;
+   		}else{//下一张
+   			nowImg++;
+   		}
+   		//修改id=showImg 标签的src
+   		$("#showImg").attr("src","image5/p"+nowImg+".jpg");
+   		//同步圆点状态
+   		$("#clickSel_div a").eq(nowImg-1).attr("class","sel_a").siblings().attr("class","blur_a");
+   		//更改轮播背景
+   		$("#lunbobeijing").attr("class","bgcolor"+nowImg);
+    	/*$(".lunbobox1").eq(nowImg-1).css("z-index",a).find("div").show().siblings("div").find("div").css("z-index",a-1).hide();
+    	    $(".lunbobox2").eq(nowImg-1).css("z-index",a).find("div").show();
+    	    $("#nextImg").css("z-index",a+1);
+    	    if(nowImg==8){
+    	    	a++;
+    	    }*/
+    	}
+    	
+    	
+    
+    </script>
+    <style type="text/css">
+    *{ /*清除默认设置*/
+    border:0px;
+    margin:0px;
+    padding:0px;
+    }
+    #all{
+    width:100%;
+    height:100%;
+    min-width: 1300px;
+    }
+    /*---------------------第一部分导航内容开始------------------------*/
+    #header{/*控制头部整体内容*/
+    width: 100%;
+    height:35px;
+    min-width: 1190px;
+    border-bottom: 1px solid #eee;
+    background-color: #f5f5f5;
+    color:#333;
+    font-size: 12px;
+    }
+     #header_content{/*控制头部整体内容的宽度*/
+    width: 1190px;
+    height:100%;
+    font-family: "Microsoft yahei" !important;
+    position:relative;
+    }
+    #header_content a{/*控制头部整体a的样式*/
+    color:#666;
+    text-decoration: none;
+    }
+    #firstbox{/*控制头部第一个有下拉框内容的样式*/
+    display:inline-bolck;
+    width:85px;
+    line-height:35px;
+    float: left;
+    }
+    #twobox{
+    float: left;
+    width:85px;
+    line-height: 35px;
+    }
+    #down1{/*控制头部第一个有下拉框内容的向下箭头的样式*/
+    position:relative;
+    top:5px;
+    }
+    #twobox span{/*控制头部第二个有下拉框文字的样式*/
+    position:relative;
+    left:5px;
+    margin-left:-10px;
+    margin-right: 10px;
+    }
+    #down2{/*控制头部第二个有下拉框内容的向下箭头的样式*/
+    position:absolute;
+    left:150px;
+    top:8px;
+    }
+    #header_content2{/*控制头部右边内容整体的宽度*/
+    width:710px;
+    height:35px;
+    position:absolute;
+    left:470px;
+    }
+    #threebox,#fourbox,#fivebox,#sixbox,#sevenbox,#eightbox,#ninebox,#tenbox{/*控制头部右边内容整体的浮动*/
+    float:left;
+    }
+    #threebox b{/*注册有礼图标*/
+    display: inline-block;
+    width: 12px;
+    height: 13px;
+    background: url(image4/newbg.png) -19px 0;
+    position: relative;
+    top:1px;
+    }
+    #threebox a,#sevenbox a,#ninebox a{/*请登录 注册有礼 易付宝   企业采购*/
+    position: relative;
+    float: left;
+    padding: 0 10px;
+    overflow: hidden;
+    line-height: 35px;
+    height: 35px;
+    }
+    #fourbox a,#fivebox a,#eightbox a{/*我的订单   我的易购  客户服务*/
+    display: block;
+    position: relative;
+    padding: 0 5px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #fourbox img,#fivebox img,#eightbox img,#down5{
+    position: relative;
+    top:5px;
+    }
+    #sixbox a{/*购物车*/
+    display: block;
+    position: relative;
+    padding: 0 5px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #car{/*购物车图标*/
+    position: relative;
+    top:2px;
+    }
+    #tenbox a{/*手机苏宁*/
+    display: block;
+    position: relative;
+    padding: 0 10px;
+    overflow: hidden;
+    line-height: 35px; 
+    }
+    #tenbox img{/*手机苏宁图标*/
+    position: relative;
+    top:6px;
+    }
+    /*---------------------头部隐藏内容------------------------*/ 
+    #firstHidden{/*控制头部第一个隐藏内容*/
+    width: 988px;
+    padding: 20px 0;
+    left: 112px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: absolute;
+    top: 35px;
+    left:0px;
+    z-index: 1;
+    }
+    #firstHidden_1,#firstHidden_2,#firstHidden_3,#firstHidden_4,#firstHidden_5{/*控制头部隐藏内容浮动*/
+    float: left;
+    width: 176px;
+    border-right: 1px solid #eee;
+    padding-left: 20px;
+    text-align: left;
+    }
+    #firstHidden dt{/*控制头部隐藏内容的小标题*/
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+    line-height: 17px;
+    }
+    #firstHidden a,#secondHidden a,#thirdHidden a,#forthHidden a{
+    color:#666;
+    font-size: 12px;
+    }
+    #firstHidden p{
+    float: left;
+    height: 25px;
+    width: 78px;
+    line-height: 25px;
+    }
+    #close{/*控制头部隐藏内容的关闭符号*/
+    font-size: 22px;
+    color:#999;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right:10px;
+    }
+    #firstHidden i{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-image: url(image4/npbg.png);
+    background-position: 0 -205px;
+    margin-left:2px;
+    }
+    #secondHidden{/*控制头部第二个隐藏内容*/
+    width: 165px;
+    padding-top: 5px;
+    position: absolute;
+    top:35px;
+    left: 87px;
+    right: auto;
+    border:1px solid #ddd;
+    background: #fff;
+    z-index: 1;
+    }
+    #secondHidden p{
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding-left: px;
+    width: 71px;
+    display: block;
+    }
+    #thirdHidden{/*控制头部第三个隐藏内容*/
+    position: absolute;
+    left:139px;
+    top: 35px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 82px;
+    padding-bottom: 5px;
+    z-index: 1;
+    }
+    #thirdHidden p{
+    display: block;
+    width: 71px;
+    height: 30px;
+    line-height:30px;
+    padding-left: 10px;
+    float: left;
+    text-align: left;
+    }
+    #forthHidden{/*控制头部第四个隐藏内容*/
+    width:162px;
+    padding-bottom:5px;
+    position:absolute;
+    left: 224px;
+    top:35px;
+    border:1px solid #ddd;
+    background-color:#fff;
+    text-align: left;
+    z-index: 1;
+    }
+    #forthHidden_1{
+    float: left;
+    margin-right: 10px;
+    }
+    #pleaselogin{
+    display: block;
+    height: 28px;
+    width: 64px;
+    line-height: 28px;
+    float: none;
+    overflow: hidden;
+    }
+    #click1{
+    display: inline-block;
+    width: 60px;
+    height: 22px;
+    text-align: center;
+    background-color: #F60;
+    text-decoration: none;
+    border-radius: 4px;
+    }
+    #forthHidden_3{
+    clear:both;
+    }
+    #forthHidden_3 a{
+    display: block;
+    width: 71px;
+    height: 30px;
+    line-height: 30px;
+    padding-left:5px;
+    float: left;
+    }
+    #huiyuan{
+    padding:2px;
+    }
+    #fiveHidden{/*控制头部第五个隐藏内容*/
+    width: 280px;
+    height: 400px;
+    background: #fff;
+    overflow: hidden;
+    padding-bottom: 0;
+    position: absolute;
+    left: 309px;
+    top: 35px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    }
+    #icon{
+    background-image: url("image4/sidebar.png");
+    background-position: 0 -291px;
+    display:inline-block;
+    width:150px;
+    height:96px;
+    margin-top:120px;
+    }
+    h5{
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    color:#ddd;
+    font-weight:normal;
+    display:inline-block;
+    margin-top:10px;
+    }
+    #info1{
+    margin-top:20px;
+    line-height: 26px;
+    text-align: center;
+    }
+    #info1 span{
+    font-size: 12px;
+    color:#ddd;
+    }
+    #info1 a{
+    display:inline-block;
+    background-color: #F60;
+    color:#fff;
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    padding:0 20px;
+    border-radius:2px;
+    line-height: 26px;
+    }
+    #sixHidden{/*控制头部第六个隐藏内容*/
+    width: 162px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    top: 35px;
+    left:384px;
+    border: 1px solid #ddd;
+    background: #fff;
+    z-index: 1;
+    }
+    #sixHidden p{
+    float: left;
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    }
+    #sixHidden a{
+    display: block;
+    padding-left:5px;
+    width: 71px;
+    }
+    #sixHidden img{
+    display: block;
+    position:absolute;
+    right:0px;
+    top:72px;
+    }
+    #sevenHidden{
+    position:absolute;
+    left:164px;
+    top:34px;
+    z-index: 1;
+    }
+    #sevenHidden img{
+    display: block;
+    width:540px;
+    height:220px;
+    margin-top:-5px;
+    border:1px solid #ddd;
+    }
+    /*-----------------------网页头部所有悬浮的样式-------------------------*/
+    #header_content1 i:HOVER,#twobox a:HOVER,#fourbox a:HOVER,#fivebox a:HOVER,#sevenbox a:HOVER,#ninebox a:HOVER,#tenbox a:HOVER{
+    color:#f60;
+    }
+    #secondHidden a:HOVER,#firstHidden a:HOVER,#threebox a:HOVER,#sixHidden a:HOVER{
+    color:#f60;
+    text-decoration: underline;
+    }
+    /*-----------------------网页头部所有失去焦点和获得焦点的样式-------------------------*/
+    .subBox1{
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    background-color: #fff;
+    }
+    .blurBox1{
+    border-left:1px solid #f5f5f5;
+    border-right:1px solid #f5f5f5;
+    }
+    .subdown{
+    transform: rotate(-180deg);
+    transition: all 0.2s ease 0s;
+    }
+    .blurdown{
+    transform: rotate(0deg);
+    transition: all 0.2s ease 0s;
+    }
+   /*---------------------第一部分导航内容结束------------------------*/
+   /*---------------------第二部分logo内容开始------------------------*/
+   #logo_main{/*logo整体内容*/
+   margin-top:0px;
+   height: 110px;
+   width: 100%;
+   overflow: hidden;
+   } 
+   #logo_centent{/*logo主要内容*/
+   position: relative;
+   height: 110px;
+   width: 990px;
+   min-width: 1190px;
+   margin: 0 auto;
+   }
+   #logo{/*logo样式*/
+   float: left;
+   width: 190px;
+   height: 90px;
+   }
+   #erweima{/*右边二维码*/
+   position: absolute;
+   right: 0;
+   top: 10px;
+   width: 88px;
+   height: 88px;
+   border: 1px solid #EEE;
+   }
+   #erweima img{
+   display:block;
+   margin: 4px;
+   width: 80px;
+   height: 80px;
+    }
+   #search1{/*搜索框整体*/
+   width: 540px;
+   height:63px;
+   display: inline;
+   float: right;
+   font-family: 'Microsoft YaHei';
+   position: absolute;
+   left:360px;
+   margin: 30px 0 0 0;
+   }
+   #search_text{/*搜索文本框*/
+   width: 420px;
+   height:40px;
+   float: left;
+   padding: 0 0 0 28px;
+   border-top: 2px solid #FA0;
+   border-bottom: 2px solid #FA0;
+   border-left: 2px solid #FA0;
+   position: relative;
+   outline: none;
+   }
+   #sousuoph{/*搜索图标*/
+   position: absolute;
+   top:12px;
+   left:8px;
+   }
+   #search_button{/*搜索按钮*/
+   width: 120px;
+   height:40px;
+   background-color: #F90;
+   font-family: 'MicroSoft YaHei';
+   font-weight: bold;
+   letter-spacing: 2px;
+   text-indent: 2px;
+   color: #FFF;
+   float: left;
+   }
+   #search2 {/*搜索框底下的小字整体*/
+   float: left;
+   width: 100%;
+   height: 18px;
+   margin-top: 5px;
+   overflow: hidden;
+   }
+   #search2 a{/*搜索框底下的小字样式*/
+   color:#999;
+   font-size:12px;
+   font-family: "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   text-decoration: none;
+   margin-right: 10px;
+   }
+   #search2 a:HOVER {/*搜索框底下的小字悬浮样式*/
+	color:#F60;
+   }
+   /*---------------------第二部分logo内容结束------------------------*/
+   
+   /*---------------------第三部分内容开始（轮播图上）------------------------*/
+   #leader{/*轮播图上面那一行导航*/
+   min-width: 1190px;
+   position: relative;
+   width: 100%;
+   height: 38px;
+   }
+   #leader_centent{
+   width: 1190px;
+   height:38px;
+   position: relative;
+   }
+   li{
+   list-style-type: none;
+   }
+   #alls{/*全部商品*/
+   position: absolute;
+   top: 0;
+   display: block;
+   width: 163px;
+   padding-left: 27px;
+   height: 38px;
+   line-height: 38px;
+   background-color: #F90;
+   color: #FFF !important;
+   font-size: 13px;
+   font-family: "Microsoft Yahei";
+   font-weight: bold;
+   text-decoration: none;
+   text-align: left;
+   }
+   #shop_logo{/*全部商品图标*/
+   background-image: url("image5/index.png");
+   background-position: 0 0;
+   background-repeat: no-repeat;
+   position: absolute;
+   display: block;
+   width: 12px;
+   height: 12px;
+   top: 14px;
+   left: 9px;
+   }
+   #allshopSort{
+   position: absolute;
+   top: 38px;
+   left: 0;
+   width: 190px;
+   height: 440px;
+  
+   }
+   #allshopSort_content{/*全部商品底下所有内容*/
+   position: absolute;
+   width: 190px;
+   height: 440px;
+   top: 0;
+   left: 0;
+   background: #252221;
+   }
+   #list{
+   position: absolute;
+   left: 0;
+   top: 1px;
+   height: 438px;
+   width: 191px;
+   list-style: none;
+   }
+   #list  li{
+   position: relative;
+   width: 180px;
+   height: 31px;
+   padding: 0 10px 0 0px;
+   line-height: 31px;
+   text-align: left;
+   }
+   #list  a{
+   display: inline-block;
+   vertical-align: middle;
+   text-decoration: none;
+   font-family: "Microsoft Yahei";
+   font-size: 12px;
+   margin-right: -2px;
+   }
+   #list a:HOVER{
+   color: #f60;
+   }
+   .sublist{
+   color:#333;
+   }
+   .blurlist{
+   color:#fff;
+   }
+   #list em{
+   display: inline-block;
+   color: #777;
+   padding: 0 1px;
+   font-size: 12px;
+   font-style: normal;
+   position: relative;
+   left:2px;
+   }
+   #list i{/*全部商品底下所有内容的图标*/
+   display: inline-block;
+   margin-left: 2px;
+   float: left;
+   }
+   .list_logo1{/*全部商品底下所有内容的图标的位置*/
+   margin-top: 7px;
+   margin-right:3px;
+   }
+   .list_logo2,.list_logo3,.list_logo5,.list_logo6,.list_logo7,.list_logo8,.list_logo9 {
+   margin-top:9px;
+   margin-right:3px;
+   }
+   .list_logo4{
+   margin-top:11px;
+   margin-right:3px;
+   }
+   .list_logo10{
+   margin-top:6px;
+   margin-right:3px;
+   }
+   .list_logo11,.list_logo12,.list_logo13,.list_logo14{
+   margin-top:8px;
+   margin-right:3px;
+   }
+   #list_children{/*全部商品隐藏的部分*/
+   position: absolute;
+   left:190px;
+   top:0px;
+   z-index:1;
+   border:1px #382526 solid;
+   border-left:1px #fff solid;
+   }
+   .subAllshop{
+   background-color: #fff;
+   }
+   .blurAllshop{
+   background: #252221;
+   }
+   
+   
+   #lineleader{/*轮播图上导航栏*/
+   width: 785px;
+   height: 38px;
+   line-height: 38px;
+   overflow: hidden;
+   padding-left: 10px;
+   }
+   #lineleader ul li{
+   position: relative;
+   height: 38px;
+   font-weight: bold;
+   float: left;
+   display: block;
+   padding: 0 12px 0 13px;
+   }
+   #lineleader ul li a{
+   display: block;
+   font-size: 15px;
+   text-decoration: none;
+   color: #333;
+   font-family: "Microsoft Yahei";
+   line-height: 38px;
+   }
+   #hot{
+   background-image: url("image5/index.png");
+   background-position: -345px  -213px;
+   background-repeat: no-repeat;
+   display: inline-block;
+   height: 17px;
+   width: 14px;
+   position: absolute;
+   left: auto;
+   right: -5px;
+   top: 0;
+   }
+   #dianshang img{
+   display: block;
+   width: 170px;
+   height: 38px;
+   }
+   #dianshang{
+   text-decoration: none;
+   position: absolute;
+   right:0;
+   bottom: 0; 
+   }
+   #alls:HOVER{
+   background-color: #F80;
+   }
+   #lineleader li a:HOVER{/*轮播图上导航栏悬浮样式*/
+   color: #F60;
+   }
+   #lineleader li:HOVER span{
+   background-image: url("image5/index.png");
+   background-position: -37px  0;
+   display:inline-block;
+   width:25px;
+   height: 8px;
+   margin-top: -8px;
+   transition: all .5s;
+   }
+   /*---------------------------轮播图-----------------------------*/
+   #lunbotu{  /*轮播图整块*/
+   width:830px;
+   height:440px;
+   margin-left:20px;
+   position: relative;
+   }
+   #backImg{  /*后退按钮*/
+   display:inline-block;
+   width: 30px;
+   height: 64px;
+   background-image: url("image5/index.png");
+   background-repeat: no-repeat;
+   background-position: -82px -145px;
+   text-decoration: none;
+   position: absolute;
+   top:180px;
+   left:0px;
+   }
+   #nextImg{  /*前进按钮*/
+   display:inline-block;
+   width: 30px;
+   height: 64px;
+   background-image: url("image5/index.png");
+   background-repeat: no-repeat;
+   background-position: -120px -145px;
+   text-decoration: none;
+   position: absolute;
+   top:180px;
+   right:0px;
+   }
+   #clickSel_div{  /*小圆圈按钮*/
+   display:inline-block;
+   opacity: 0.8;
+   padding: 0 8px 0 0;
+   height: 20px;
+   text-align: center;
+   position: absolute;
+   left:271px;
+   bottom:20px;
+   }
+   .blur_a {/*小圆圈失去焦点的样式*/
+   position: relative;
+   display: inline-block;
+   margin-left: 8px;
+   width: 20px;
+   height: 20px;
+   background-image: url("image5/index.png");
+   background-position: -26px -100px;
+   color: #fff;
+   text-decoration: none;
+   }
+   .sel_a {/*小圆圈获得焦点的样式*/
+   position: relative;
+   display: inline-block;
+   margin-left: 8px;
+   width: 20px;
+   height: 20px;
+   background-image: url("image5/index.png");
+   background-position: -0px -100px;
+   color: #f60;
+   text-decoration: none;
+   }
+   .lunbobox1,.lunbobox2{/*轮播图上面固定的两个框框的样式*/
+   display: inline-block;
+   width:150px;
+   height:213px;
+   background-color:#ddd;
+   opacity:0.82;
+   }
+   .lunbobox1{/*轮播图上面固定的上框框的样式*/
+   position: absolute;
+   right:5px;
+   top:5px;
+   }
+   .lunbobox2{/*轮播图上面固定的下框框的样式*/
+   position: absolute;
+   right:5px;
+   bottom:5px;
+   }
+   .a01{
+   display: inline-block;
+   width: 112px;
+   height: 22px;
+   overflow: hidden;
+   font-size: 14px/22px;
+   font-family:"Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #333;
+   position: absolute;
+   top: 17px;
+   right: 19px;
+   text-decoration: none;
+   text-align: left;
+   }
+   .a02{
+   display:inline-block;
+   width: 120px;
+   height: 18px;
+   position: absolute;
+   top: 37px;
+   right: 13px;
+   overflow: hidden;
+   font-size: 12px; 
+   font-family:"Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #666;
+   text-align:left;
+   text-decoration: none;
+   }
+   .i1 img{
+   position: absolute;
+   top: 67px;
+   right: 5px;
+   width: 140px;
+   height: 140px;
+   }
+   .a03{
+   display: inline-block;
+   width: 112px;
+   height: 22px;
+   overflow: hidden;
+   font-size: 14px/22px;
+   font-family:"Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #333;
+   position: absolute;
+   top: 17px;
+   right: 22px;
+   text-decoration: none;
+   text-align: left;
+   }
+   .a04{
+   display:inline-block;
+   width: 120px;
+   height: 18px;
+   position: absolute;
+   top: 37px;
+   right: 13px;
+   overflow: hidden;
+   font-size: 12px; 
+   font-family:"Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #666;
+   text-align:left;
+   text-decoration: none;
+   }
+   .i2 img{
+   position: absolute;
+   top: 67px;
+   right:5px;
+   width:140px;
+   height:140px;
+   }
+   #lunbobeijing{/* 轮播图的背景颜色*/
+   width:100%;
+   height:440px;
+   }
+   .bgcolor1{
+   background-color: #A16741;
+   }
+   .bgcolor2{
+   background-color:#07002E; 
+   }
+   .bgcolor3{
+   background-color:#EF1FB5; 
+   }
+   .bgcolor4{
+   background-color:#FEB006; 
+   }
+   .bgcolor5{
+   background-color:#213D3E 
+   }
+   .bgcolor6{
+   background-color:#FFC331; 
+   }
+   .bgcolor7{
+   background-color: #1065DA;
+   }
+   .bgcolor8{
+   background-color:#DF3B44; 
+   }
+   
+   
+   #lunbobeijing_right{
+   width:1190px;
+   height:440px;
+   }
+   #lunbo_right{/*轮播图右面白色部分的样式*/
+   width: 170px;
+   height: 430px;
+   background: #FFF;
+   float: right;
+   margin-top: -435px;
+   position: relative;
+   }
+   #r1{/*轮播图右面白色部分第一部分的样式*/
+   width: 170px;
+   height: 161px;
+   padding: 6px 0 2px;
+   border-bottom: 1px solid #f2f2f2;
+   } 
+   #r1_ph a{
+   display:inline-block;
+   position: absolute;
+   top:5px;
+   left:48px; 
+   } 
+   #r1_ph span{
+   display:inline-block;
+   width: 150px;
+   height: 24px;
+   margin-top:73px;;
+   text-align: center;
+   font: 12px/24px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   }
+   #r1_bt{/*轮播图右面白色部分第一部分按钮的样式*/
+   margin: 6px 10px;
+   height: 26px;
+   width: 150px;
+   height:26px;
+   }
+   #r1_bt1{/*轮播图右面白色部分第一部分按钮   登录  的样式*/
+   float: left;
+   margin-right: 10px;
+   width: 68px;
+   height: 24px;
+   border: 1px solid #F90;
+   background: #F90;
+   text-align: center;
+   text-decoration: none;
+   color: #FFF;
+   font: 12px/24px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   }
+   #r1_bt2{/*轮播图右面白色部分第一部分按钮   新人有礼   的样式*/
+   float: left;
+   width: 68px;
+   height: 24px;
+   border: 1px solid #F90;
+   text-align: center;
+   text-decoration: none;
+   color: #F90;
+   font: 12px/24px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   }
+   #r1_enter{
+   position: absolute;
+   left:10px;
+   }
+   #r1_enter  a{
+   float: left;
+   width: 75px;
+   height: 26px;
+   text-align: center;
+   text-decoration: none;
+   font: 12px/24px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #333;
+   }
+    
+   #r1_enter1 em{
+   display: inline-block;
+   vertical-align: middle;
+   width: 16px;
+   height: 14px;
+   background-image: url("image5/index.png");
+   background-position:  -111px 0;
+   margin-right:5px;
+   }
+   #r1_enter2 em{
+   display: inline-block;
+   vertical-align: middle;
+   width: 16px;
+   height: 14px;
+   background-image: url("image5/index.png");
+   background-position:  -88px 0;
+   margin-right:5px;
+   }
+   #r1_enter span{
+   display: inline-block;
+   vertical-align: middle;
+   text-align:center;
+   font: 12px/24px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color:#333;
+   }
+   #r1_enter i{
+   display: inline-block;
+   vertical-align: middle;
+   font-family: "Simsun";
+   font-style: normal;
+   }
+   #r2{/*轮播图右面白色部分第二部分的样式*/
+   width: 150px;
+   height: 96px;
+   overflow: hidden;
+   margin: 9px 10px;
+   font: 12px/20px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   }
+   #r2 li{
+   list-style-type:none;
+   width: 150px;
+   height: 48px;
+   font: 12px/20px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   text-align: left;
+   }
+   #r2 a{
+   text-decoration: none;
+   font: 12px/20px "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   color: #333;
+   text-align: left;
+   }
+   #r2 i{
+   display: inline-block;
+   color: #F60;
+   font-style: normal;
+   }
+   #r2 a:HOVER {
+	color: #F60;
+   }
+   #kuaijie{/*轮播图右面白色部分第三部分的样式*/
+   width: 170px;
+   height: 145px;
+   overflow: hidden;
+   border-top: 1px solid #f2f2f2;
+   }
+   #kuaijie li{
+   float: left;
+   width: 55px;
+   height: 72px;
+   border-width: 0 1px 1px 0;
+   border-style: solid;
+   border-color: #f2f2f2;
+   list-style: none;
+   }
+   #kuaijie a{/*轮播图右面白色部分第三部分所有a的样式*/
+   display: block;
+   width: 100%;
+   height: 62px;
+   padding-top: 10px;
+   text-align: center;
+   text-decoration: none;
+   color: #333;
+   font: 12px/1.5 "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB";
+   }
+   #shuidian p{/*水电煤文字位置移动*/
+   position: relative;
+   top:8px;
+   }
+   #shuidian img{/*水电煤图片位置移动*/
+   position: relative;
+   top:3px;
+   }
+   #licai p{/*理财文字位置移动*/
+   position: relative;
+   top:-1px;
+   }
+   #zuqiu{/*足球位置移动*/
+   margin-top:2px;
+   }
+   #zuqiu p{
+   position: relative;
+   top:1px;
+   }
+   #kuaijie a:HOVER {/*第三部分  a 悬浮的样式*/
+    color: #F60;
+   }
+   /*----------------------侧边固定栏------------------------*/  
+   #rightAbsolute{/*-侧边固定栏整体*/
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 35px;
+   height: 100%;
+   background-color: #383838;
+   font: 12px/1.5 arial,tahoma,\5b8b\4f53;
+   }
+   #j1{/*-侧边固定栏人头*/
+   display: block;
+   position: relative;
+   top:25px;
+   width: 35px;
+   height: 30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 0px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #rightAbsoluteom_first{/*-侧边固定栏购物车组*/
+   width:35px;
+   height:197px;
+   position: absolute;
+   top:155px;
+   }
+   #rightAbsoluteom_first_one{
+   width:29px;
+   height:117px;
+   padding: 3px 0 10px;
+   border: 1px solid #4D4D4D;
+   border-width: 1px 0;
+   text-align: center;
+   margin-left:3px;
+   margin-top:35px;
+   cursor: pointer;
+   }
+   #rightAbsoluteom_first_one i{
+   display:inline-block;
+   width:29px;
+   height:30px;
+   background-image: url("image5/sidebaricon.png");
+   background-position: 0 -210px;
+   cursor: pointer;
+   }
+   .shopCar{
+   display: block;
+   width: 20px;
+   margin: 0 auto;
+   color: #FFF;
+   text-align: center;
+   font-family: "Microsoft Yahei";
+   font: 12px/1.5 arial,tahoma,\5b8b\4f5;
+   cursor: pointer;
+   }
+   .num{
+   display: inline-block;
+   min-width: 17px;
+   height: 15px;
+   padding: 0 2px;
+   background-color: #D00;
+   color: #FFF;
+   line-height: 15px;
+   border-radius: 5px;
+   text-align: center;
+   cursor: pointer;
+   }
+   #rightAbsoluteom_first_two{
+   position: relative;
+   width: 35px;
+   height: 30px;
+   margin-bottom: 5px;
+   font-family: "Microsoft Yahei";
+   cursor: pointer;
+   margin-top:5px;
+   }
+   #rightAbsoluteom_first_two a{
+   text-decoration: none;
+   }
+   .tip_one{
+   display: block;
+   position: relative;
+   width: 35px;
+   height: 30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -23px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   .message{
+   width: 47px;
+   height: 30px;
+   line-height: 30px;
+   color: #FFAA01;
+   text-indent: 11px;
+   letter-spacing: 1px;
+   cursor: pointer;
+   }
+   #rightAbsoluteom_second{/*-侧边理财组*/
+   width:35px;
+   height:100px;
+   position: absolute;
+   top:440px;
+   }
+   #l1{/*-侧边固定栏   理财  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height: 30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -46px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #l2{/*-侧边固定栏   足迹  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height: 30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -70px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #l3{/*-侧边固定栏  签到  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height: 30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -95px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #rightAbsoluteom_third{/*-侧边固定栏在线咨询组*/
+   width:35px;
+   height:140px;
+   position: absolute;
+   bottom:0px;
+   }
+   #v1{/*   在线咨询  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height:30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -117px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #v2{/*   意见反馈  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height:30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -141px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #v3{/*   二维码  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height:30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -163px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #v4{/*  回到顶部  */
+   display: block;
+   position: relative;
+   width: 35px;
+   height:30px;
+   background-image:url("image5/sidebaricon.png");
+   background-position:0 -186px;
+   background-repeat:no-repeat;
+   cursor: pointer;
+   }
+   #downPage{
+   margin-top:20px;
+   }
+   /*----------------------顶部搜索框固定内容的样式-----------------------*/
+   #fix_top{
+   position: fixed;
+   border:1px #fff solid;
+   height: 50px;
+   width: 100%;
+   min-width: 1109px;
+   background: #fff;
+   box-shadow: rgba(0,0,0,.2) 0 1px 5px;
+   left: 0;
+   top: 0;
+   }
+   #fix_top_content{
+   height: 50px;
+   width: 1190px;
+   position: relative;
+   border:1px #fff solid;
+   }
+   #alls1{/*全部商品*/
+   position: absolute;
+   top: 6px;
+   display: block;
+   width: 163px;
+   padding-left: 27px;
+   height: 38px;
+   line-height: 38px;
+   background-color: #F90;
+   color: #FFF !important;
+   font-size: 13px;
+   font-family: "Microsoft Yahei";
+   font-weight: bold;
+   text-decoration: none;
+   text-align: left;
+   }
+   #shop_logo1{/*全部商品图标*/
+   background-image: url("image5/index.png");
+   background-position: 0 0;
+   background-repeat: no-repeat;
+   position: absolute;
+   display: block;
+   width: 12px;
+   height: 12px;
+   top: 14px;
+   left: 9px;
+   }
+   #cn{
+   width:1190px;
+   height:438px;
+   margin-top: 50px;
+   position: relative;
+   }
+   #allshopSort1{
+   position: absolute;
+   top: -8px;
+   left:0;
+   width: 190px;
+   height: 440px;
+   }
+   #allshopSort_content1{/*全部商品底下所有内容*/
+   position: absolute;
+   top: 0;
+   left:0px;
+   width: 190px;
+   height: 440px;
+   background: #252221;
+   }
+   #list1{
+   position: absolute;
+   left: 0;
+   top: 1px;
+   height: 438px;
+   width: 191px;
+   list-style: none;
+   }
+   #list1  li{
+   position: relative;
+   width: 180px;
+   height: 31px;
+   padding: 0 10px 0 0px;
+   line-height: 31px;
+   text-align: left;
+   }
+   #list1  a{
+   display: inline-block;
+   vertical-align: middle;
+   text-decoration: none;
+   font-family: "Microsoft Yahei";
+   font-size: 12px;
+   margin-right: -2px;
+   }
+   #list_children1{/*全部商品隐藏的部分*/
+   position: absolute;
+   left:190px;
+   top:0px;
+   z-index:1;
+   border:1px #382526 solid;
+   border-left:1px #fff solid;
+   }
+   #search4{/*搜索框整体*/
+   width: 540px;
+   height:63px;
+   display: inline;
+   font-family: 'Microsoft YaHei';
+   position:absolute;
+   top:-25px;
+   left:380px;
+   margin: 30px 0 0 0;
+   }
+   #search_text1{/*搜索文本框*/
+   width: 420px;
+   height:40px;
+   float: left;
+   padding: 0 0 0 28px;
+   border-top: 2px solid #FA0;
+   border-bottom: 2px solid #FA0;
+   border-left: 2px solid #FA0;
+   position: relative;
+   outline: none;
+   }
+   #sousuoph1{/*搜索图标*/
+   position: absolute;
+   top:12px;
+   left:8px;
+   }
+   #search_button1{/*搜索按钮*/
+   width: 120px;
+   height:40px;
+   background-color: #F90;
+   font-family: 'MicroSoft YaHei';
+   font-weight: bold;
+   letter-spacing: 2px;
+   text-indent: 2px;
+   color: #FFF;
+   float: left;
+   }
+   #list1 a:HOVER{
+   color: #f60;
+   }
+   #list1 em{
+   display: inline-block;
+   color: #777;
+   padding: 0 1px;
+   font-size: 12px;
+   font-style: normal;
+   position: relative;
+   left:2px;
+   }
+   #fixdaohang{
+   width:240px;
+   height:40px;
+   position: absolute;
+   top:0px;
+   right:0px;
+   margin-top:3px;
+   }
+   #loginss {
+   position: relative;
+   top:1px;
+   }
+   #denglu b{/*注册有礼图标*/
+   display: inline-block;
+   width: 12px;
+   height: 13px;
+   background: url(image4/newbg.png) -19px 0;
+   position: relative;
+   top:1px;
+   }
+   #denglu a{/*请登录 注册有礼 */
+   position: relative;
+   float: left;
+   padding: 0 10px;
+   overflow: hidden;
+   line-height: 35px;
+   height: 35px;
+   font-size:12px;
+   color:#666;
+   text-decoration: none;
+   float:left;
+   margin-top:2px;
+   }
+   #fixbox{/*购物车组*/
+   position: absolute;
+   top: 0px;
+   right:0px;
+   }
+   #fixbox a{/*购物车*/
+   display: block;
+   position: relative;
+   padding: 0 5px;
+   overflow: hidden;
+   line-height: 50px;
+   font-size:12px;
+   text-decoration: none;
+   }
+   #car1{/*购物车图标*/
+   position: relative;
+   left:10px;
+   top:-1px;
+   }
+   #ddd{
+   position: relative;
+   left:8px;
+   top:-3px;
+   }
+   #downs{
+   position: relative;
+   left:5px;
+   top:3px;
+   }
+   #fixHidden{/*购物车下隐藏内容*/
+   width: 280px;
+   height: 400px;
+   background: #fff;
+   overflow: hidden;
+   padding-bottom: 0;
+   position: absolute;
+   left: -182px;
+   top: 50px;
+   border: 1px solid #ddd;
+   z-index: 1;
+   }
+   #icon2{
+   background-image: url("image4/sidebar.png");
+   background-position: 0 -291px;
+   display:inline-block;
+   width:150px;
+   height:96px;
+   margin-top:120px;
+   }
+    h5{
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    color:#ddd;
+    font-weight:normal;
+    display:inline-block;
+    margin-top:10px;
+    }
+    #info2{
+    margin-top:20px;
+    line-height: 26px;
+    text-align: center;
+    }
+    #info2 span{
+    font-size: 12px;
+    color:#ddd;
+    }
+    #info2 a{
+    display:inline-block;
+    background-color: #F60;
+    color:#fff;
+    font-size: 14px;
+    font-family:"Microsoft Yahei";
+    padding:0 20px;
+    border-radius:2px;
+    line-height: 26px;
+    }
+     .subBox2{
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+    background-color: #fff;
+    }
+    .blurBox2{
+    border-left:1px solid #fff;
+    border-right:1px solid #fff;
+    }
+    </style>
+  </head>
+  
+  <body>
+   <div id="all">
+   <div align="center">
+	   <div id="header" align="center"><!-- 网页头部所有内容 居中-->
+		   <div id="header_content">
+			   <div id="firstbox" class="blurBox1"><!-- 网页头部第一个有子选项部分-->
+				   <a href="javascript:void(0);">
+					   <span>网站导航</span>
+					   <img src="image4/QQ截图20170827010245.png" id="down1"/>
+				   </a>
+			   <div id="firstHidden" style="display: none;"><!--网站导航底下第一个隐藏内容 -->
+				   <div id="firstHidden_1">
+					   <dt>特色购物</dt>
+					   <p><a href="javascript:void(0);">苏宁互联</a></p>
+					   <p><a href="javascript:void(0);">苏宁达人</a></p>
+					   <p><a href="javascript:void(0);">苏宁V购</a></p>
+					   <p><a href="javascript:void(0);">苏宁卡</a></p>
+					   <p><a href="javascript:void(0);">海外购</a></p>
+					   <p><a href="javascript:void(0);">大聚会</a><i></i></p>
+					   <p><a href="javascript:void(0);">视频购物</a></p>
+					   <p><a href="javascript:void(0);">办公直通车</a></p>
+					   <p><a href="javascript:void(0);">以旧换新</a></p>
+					   <p><a href="javascript:void(0);">二手优品</a></p>
+					   <p><a href="javascript:void(0);">领券中心</a></p>
+					   <p><a href="javascript:void(0);">香港苏宁</a></p>
+				   </div>
+				   <div id="firstHidden_2">
+					   <dt>主题频道</dt>
+					   <p><a href="javascript:void(0);">电器城</a></p>
+					   <p><a href="javascript:void(0);">苏宁超市</a></p>
+					   <p><a href="javascript:void(0);">手机</a></p>
+					   <p><a href="javascript:void(0);">运动馆</a></p>
+					   <p><a href="javascript:void(0);">图书</a></p>
+					   <p><a href="javascript:void(0);">红孩子母婴</a></p>
+					   <p><a href="javascript:void(0);">美妆个护</a></p>
+					   <p><a href="javascript:void(0);">电脑</a></p>
+					   <p><a href="javascript:void(0);">服装城</a></p>
+					   <p><a href="javascript:void(0);">智能生活</a></p>
+					   <p><a href="javascript:void(0);">家装馆</a></p>
+					   <p><a href="javascript:void(0);">汽车用品</a></p>
+					   <p><a href="javascript:void(0);">苏宁热卖</a><i></i></p>
+					   <p><a href="javascript:void(0);">排行版</a></p>
+				   </div>
+				   <div id="firstHidden_3">
+					   <dt>生活助手</dt>
+					   <p><a href="javascript:void(0);">零钱宝</a><i></i></p>
+					   <p><a href="javascript:void(0);">手机充值</a></p>
+					   <p><a href="javascript:void(0);">火车票</a></p>
+					   <p><a href="javascript:void(0);">转账还款</a></p>
+					   <p><a href="javascript:void(0);">约服务</a></p>
+					   <p><a href="javascript:void(0);">水电煤</a></p>
+					   <p><a href="javascript:void(0);">保险</a></p>
+					   <p><a href="javascript:void(0);">机票</a></p>
+					   <p><a href="javascript:void(0);">门店查询</a></p>
+				   </div>
+				   <div id="firstHidden_4">
+					   <dt>会员服务</dt>
+					   <p><a href="javascript:void(0);">会员联盟</a><i></i></p>
+					   <p><a href="javascript:void(0);">延长保修</a></p>
+					   <p><a href="javascript:void(0);">免费书城</a></p>
+					   <p><a href="javascript:void(0);">易付宝</a></p>
+					   <p><a href="javascript:void(0);">苏宁理财</a></p>
+					   <p><a href="javascript:void(0);">苏宁金融</a></p>
+				   </div>
+				   <div id="firstHidden_5">
+					   <dt>更多热点</dt>
+					   <p><a href="javascript:void(0);">PPTV</a></p>
+					   <p><a href="javascript:void(0);">客户端</a></p>
+					   <p><a href="javascript:void(0);">商家入驻</a><i></i></p>
+					   <p><a href="javascript:void(0);">苏宁众包</a></p>
+					   <p><a href="javascript:void(0);">苏宁联盟</a></p>
+					   <p><a href="javascript:void(0);">用户体验</a></p>
+					   <p><a href="javascript:void(0);">公益频道</a></p>
+					   <p><a href="javascript:void(0);">校园先锋</a></p>
+					   <p><a href="javascript:void(0);">苏宁加盟</a></p>
+					   <p><a href="javascript:void(0);">苏宁云</a></p>
+					   <p><a href="javascript:void(0);">苏宁足球</a></p>
+				   </div>
+				   <span id="close">X</span>
+			   </div>
+			   </div>
+			   <div id="twobox"><!-- 网页头部第二个有子选项部分-->
+				   <a href="javascript:void(0);">
+					   <span>商家入驻</span>
+					   <img src="image4/QQ截图20170827010245.png" id="down2"/>
+				   </a>
+				   <div id="secondHidden" style="display: none;"><!--网站导航底下第二个隐藏内容 -->
+					   <p><a href="javascript:void(0);">服务市场</a></p>
+					   <p><a href="javascript:void(0);">金融中心</a></p>
+					   <p><a href="javascript:void(0);">商家论坛</a></p>
+					   <p><a href="javascript:void(0);">培训中心</a></p>
+					   <p><a href="javascript:void(0);">增值服务</a></p>
+				   </div>
+			   </div>
+			   <div id="header_content2">
+				    <div id="threebox">
+					    <a href="login.html" id="login">请登录</a>
+					    <a href="register.html" id="register" style="color:#f60;">
+					                    注册有礼
+					    	<b id="gift"></b>
+					    </a>
+				    </div>
+				    <div id="fourbox" class="blurBox1"><!-- 网页头部第三个有子选项部分-->
+					    <a href="javascript:void(0);">我的订单
+					    	<img src="image4/QQ截图20170827010245.png" id="down3"/>
+					    </a>
+					    <div id="thirdHidden" style="display: none;"><!--网站导航底下第三个隐藏内容 -->
+						    <p><a href="javascript:void(0);">待支付</a></p>
+							<p><a href="javascript:void(0);">待收货</a></p>
+							<p><a href="javascript:void(0);">带评价</a></p>
+							<p><a href="javascript:void(0);">修改订单</a></p>
+					    </div>
+				    </div>
+				    <div id="fivebox" class="blurBox1"><!-- 网页头部第四个有子选项部分-->
+					    <a href="javascript:void(0)";>我的易购
+					    	<img src="image4/QQ截图20170827010245.png" id="down4"/>
+					    </a>
+					    <div id="forthHidden" style="display: none;">
+						    <a id="forthHidden_1"><img src="image4/0000000000_01_60x60.jpg" /></a>
+						    <div id="forthHidden_2">
+							    <a href="javascript:void(0);" id="pleaselogin">请登录</a>
+							    <a href="javascript:void(0);" id="click1" style="color:#fff;line-height: 22px">点击打卡</a>
+						    </div>
+						    <div id="forthHidden_3"><!--网站导航底下第四个隐藏内容 -->
+							    <a href="javascript:void(0);">我的二手</a>
+							    <a href="javascript:void(0);">我的收藏</a>
+							    <a href="javascript:void(0);">我的金融</a>
+							    <a href="javascript:void(0);">苏宁会员<img src="image4/QQ截图20170828093921.png" width="16px" id="huiyuan"/></a>
+							    <a href="javascript:void(0);">我的任性付</a>
+							    <a href="javascript:void(0);">我的优惠券</a>
+						    </div>
+					    </div>
+				    </div>
+				    <div id="sixbox" class="blurBox1"><!-- 网页头部第五个有子选项部分-->
+					    <a href="javascript:void(0)"; style="color:#f60;">
+						    <img src="image4/QQ截图20170827144148.png" id="car" width="16px"/>
+						          购物车0
+						    <img src="image4/QQ截图20170827010245.png" id="down5"/>
+					    </a>
+					    <div id="fiveHidden" style="display: none;"><!--网站导航底下第五个隐藏内容 -->
+						    <i id="icon"></i>
+						    <h5>不要让您的购物车空着哦，快去逛逛吧</h5>
+						    <div id="info1">
+						    <span>如果您已添加过宝贝，那就赶紧登录查看吧</span>
+						    <a href="login.html">登录</a>
+						    </div>
+					    </div>
+				    </div>
+				    <div id="sevenbox">
+					    <a href="javascript:void(0)";>易付宝</a>
+					</div>
+				    <div id="eightbox" class="blurBox1"<!-- 网页头部第六个有子选项部分-->
+					    <a href="javascript:void(0)";>
+						          客户服务
+						    <img src="image4/QQ截图20170827010245.png" id="down6"/>      
+					    </a>
+					    <div id="sixHidden" style="display: none;"><!--网站导航底下第六个隐藏内容 -->
+					    <p><a href="javascript:void(0);">苏宁棒客</a></p>
+					    <p><a href="javascript:void(0);">帮助中心</a></p>
+					    <p><a href="javascript:void(0);">查找门店</a></p>
+					    <p><a href="javascript:void(0);">退换/维修</a></p>
+					    <p><a href="javascript:void(0);">建议反馈</a></p>
+					    <p><a href="javascript:void(0);">在线咨询</a><img src="image4/QQ截图20170828110924.png" width="16px"/></p>
+					    </div>
+				    </div>
+					<div id="ninebox">
+					    <a href="javascript:void(0)"; id="login">企业采购</a>
+				    </div>
+				    <div id="tenbox" class="blurBox1">
+					    <a href="javascript:void(0)"; id="login">
+						    <img src="image4/QQ截图20170827152259.png" id="phone" width="16px">
+						         手机苏宁
+					    </a>
+					    <div id="sevenHidden" style="display: none;"><!--网站导航底下第七个隐藏内容 -->
+					    	<img src="image4/QQ截图20170828114144.png"/>
+					    </div>
+				    </div>
+				    
+			    </div>
+		   </div>
+	   </div>
+	   <div id="logo_main"><!-- logo整体 -->
+		   <div id="logo_centent"><!-- logo整体内容 -->
+		       <a href="http://www.suning.com" ><img src="image5/150338612019892140.png" id="logo"/></a>
+			   <div id="erweima"><!-- 右边二维码 -->
+			         <img src="image5/149391734040363425.png">
+			   </div>
+			   <div id="search1"><!-- 搜索框整体 -->
+				   <div id="searchbox">
+					   <form action="">
+					   <input type="text" id="search_text" placeholder="开学季领800元代金券">
+					   <img src="image5/QQ截图20170829115442.png" id="sousuoph"/>
+					   <input type="submit" value="搜索" id="search_button">
+					   </form>
+				   </div>
+				   <div id="search2"><!-- 搜索框底下小字部分 -->
+					   <a href="javascript:void(0)">冰箱</a>
+					   <a href="javascript:void(0)">抢海尔空调</a>
+					   <a href="javascript:void(0)">游戏本</a>
+					   <a href="javascript:void(0)">美玲粉丝大促</a>
+					   <a href="javascript:void(0)">老板超品日</a>
+					   <a href="javascript:void(0)">4k超高清</a>
+					   <a href="javascript:void(0)">油烟机</a>
+					   <a href="javascript:void(0)">电饭煲</a>
+					   <a href="javascript:void(0)">手机</a>
+					   <a href="javascript:void(0)">抽纸</a>
+				   </div>
+			   </div>
+		   </div>
+	   </div>
+	   <div id="leader">
+	   <div id="leader_centent"><!-- 全部商品 -->
+		   <div id="allshop">
+			   <a href="javascript:void(0)" id="alls">
+				   <i id="shop_logo"></i>
+				   <span>全部商品分类</span>
+			   </a>
+			   <div id="allshopSort">
+			   <div id="allshopSort_content">
+				    <ul id="list">
+					    <li class="hei33">
+							<i class="list_logo1"><img src="image5/telephone.png"/></i>
+							<a target="_blank" href="//shouji.suning.com/">手机</a><em>/</em>
+							<a target="_blank" href="https://yys.suning.com/">运营商</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/zhinengshuma.html">智能数码</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo2"><img src="image5/equipment.png"/></i>
+							<a target="_blank" href="//pindao.suning.com/city/kongtiao.html">空调</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/caidian.html">电视</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/bingxi.html">冰箱</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/bingxi.html">洗衣机</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo3"><img src="image5/cookroom.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/chuwei.html">厨卫电器</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/xiaojiadian.html">生活家电</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/chuiju.html">厨具</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo4"><img src="image5/computer.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/diannao.html">电脑办公</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/shuma.htm">相机</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-20529-0.html">DIY</a>
+						</li>
+						<li>
+							<i class="list_logo5"><img src="image5/home.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/jujiajiafang.html">家居</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiajuguan.html">家具</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiancai.html">家装</a>
+						</li>
+						<li>
+							<i class="list_logo6"><img src="image5/food.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/shipinliangyou.html">食品</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiushuichongtiao.html">酒水</a><em>/</em>
+							<a target="_blank"  href="https://sxs.suning.com/sxspc_huadong.html">生鲜</a><em>/</em>
+						<a target="_blank"  href="https://china.suning.com/">特产</a>
+						</li>
+						<li>
+							<i class="list_logo7"><img src="image5/maquillage.png"/></i>
+							<a target="_blank"  href="https://binggo.suning.com/">个护化妆</a><em>/</em>
+							<a target="_blank"  href="//chaoshi.suning.com/">纸品清洁</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-500552-0.html">宠物</a>
+						</li>
+						<li>
+							<i class="list_logo8"><img src="image5/motherBaby.png"/></i>
+							<a target="_blank"  href="//redbaby.suning.com/">母婴</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/mywanju.html">玩具</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/tccpindaoye.html">车床</a><em>/</em>
+							<a target="_blank"  href="//redbaby.suning.com/tztxpdycqd.html">童装</a>
+						</li>
+						<li>
+							<i class="list_logo9"><img src="image5/sports.png"/></i>
+							<a target="_blank"  href="//sports.suning.com/">运动</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-420008-0.html">户外</a><em>/</em>
+							<a target="_blank"  href="https://snfc.suning.com/">足球</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-420029-0.html">骑行</a>
+						</li>
+						<li>
+							<i class="list_logo10"><img src="image5/clothing.png"/></i>
+							<a target="_blank"  href="//fashion.suning.com/">男装</a><em>/</em>
+							<a target="_blank"  href="//fashion.suning.com/">女装</a><em>/</em>
+							<a target="_blank"  href="//fashion.suning.com/">内衣</a>
+						</li>
+						<li>
+							<i class="list_logo11"><img src="image5/shoes(1).png"/></i>
+							<a target="_blank"  href="//fashion.suning.com/">鞋靴</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/xiangbao.html">箱包</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/zhongbiaoyanjing.html">钟表</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/zhubao.html">珠宝</a>
+						</li>
+						<li>
+							<i class="list_logo12"><img src="image5/car.png"/></i>
+							<a target="_blank"  href="https://car.suning.com/">汽车超市</a><em>/</em>
+							<a target="_blank"  href="https://car.suning.com/qichenew.html">汽车用品</a>
+						</li>
+						<li>
+							<i class="list_logo13"><img src="image5/book.png"/></i>
+							<a target="_blank" href="//book.suning.com/">图书</a><em>/</em>
+							<a target="_blank" href="//redbaby.suning.com/tongshu.html">童书</a><em>/</em>
+							<a target="_blank"  href="https://snbook.suning.com/web/index.htm">电子书</a>
+						</li>
+						<li>
+							<i class="list_logo14"><img src="image5/money.png"/></i>
+							<a target="_blank"  href="https://licai.suning.com/lcportal/licaiIndex.htm?channelCode=PC_YGMstation">理财</a><em>/</em>
+							<a target="_blank"  href="https://zc.suning.com/">众筹</a><em>/</em>
+							<a target="_blank"  href="https://fq.suning.com/">分期</a><em>/</em>
+							<a target="_blank"  href="https://issp.suning.com/">保险</a>
+						</li>
+				    </ul>
+			   </div>
+			   <div id="list_children">
+			   <img src="image5/m1.png" width="999px" height="440px">
+			   <img src="image5/m2.png" width="999px" height="440px">
+			   <img src="image5/m3.png" width="999px" height="490px">
+			   <img src="image5/m4.png" width="999px" height="450px">
+			   <img src="image5/m5.png" width="999px" height="453px">
+			   <img src="image5/m6.png" width="999px" height="439px">
+			   <img src="image5/m7.png" width="999px" height="440px">
+			   <img src="image5/m8.png" width="999px" height="448px">
+			   <img src="image5/m9.png" width="999px" height="440px">
+			   <img src="image5/m10.png" width="999px" height="439px">
+			   <img src="image5/m11.png" width="999px" height="442px">
+			   <img src="image5/m12.png" width="999px" height="450px">
+			   <img src="image5/m13.png" width="999px" height="446px">
+			   <img src="image5/m14.png" width="999px" height="439px">
+			   </div>
+			   
+			   
+			   </div>
+		   </div>
+		   <div id="lineleader">
+			   <ul>
+				   <li>
+					   <a href="javascript:void(0)">大聚惠</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">红孩子</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">苏宁超市</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">电器城
+					   <i id="hot"></i>
+					   </a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">生活家电</a>
+					   <span></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">服装城</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">海外购</a>
+					   <span class="blurSpan"></span>
+				   </li>
+					   <li>
+					   <a href="javascript:void(0)">特卖</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">苏宁金融</a>
+					   <span class="blurSpan"></span>
+				   </li>
+				   <li>
+					   <a href="javascript:void(0)">苏宁会员</a>
+					   <span class="blurSpan"></span>
+				   </li>
+			   </ul>
+		   </div>
+		   <div>
+		    <a href="javascript:void(0)" id="dianshang">
+		    	<img src="image5/150271436155347363.png"/>
+		    </a>
+		   </div>
+		   </div>
+   </div>
+	   <div id="lunbobeijing" class="bgcolor1">
+	   <div id="lunbobeijing_right">
+		   <div id="lunbotu">
+			   <div id="imgPlay">
+			   		<a href="javascript:void(0)"><img src="image5/p1.jpg" id="showImg"/></a>
+			   </div>
+			   <div id="lunbobox">
+					<div class="lunbobox1" >
+						<div class="smallimgPlay1"  style="display: none;">
+							<p class="up1">
+								<a href="javascript:void(0)" class="a01">电视家影</a><br>
+								<a href="javascript:void(0)" class="a02">58时预定直降1000元</a>
+							</p><br>
+							<a href="javascript:void(0)" class="i1">
+								<img src="image5/c1.png"/>
+							</a>
+						</div>
+					</div>
+					<div class="lunbobox2" >
+						<div class="smallimgPlay2"  style="display: none;">
+							<p class="up2">
+								<a href="javascript:void(0)" class="a03">颜值不掉线</a><br>
+								<a href="javascript:void(0)" class="a04">2件9折 3件85折</a>
+							</p><br>
+							<a href="javascript:void(0)" class="i2">
+								<img src="image5/c2.png"/>
+							</a>
+							</div>
+					</div>
+				    <div class="lunbobox1">
+						   <div class="smallimgPlay1" style="display: none;">
+						   <p class="up1">
+						   <a href="javascript:void(0)" class="a01">荣耀V9</a><br>
+						   <a href="javascript:void(0)" class="a02">最高立减500元</a>
+						   </p><br>
+						   <a href="javascript:void(0)" class="i1">
+						   		<img src="image5/c3.png"/>
+						   </a>
+						   </div>
+		   			</div>
+				    <div class="lunbobox2">
+				   	   <div class="smallimgPlay2" style="display: none;">
+					   <p class="up2">
+					   <a href="javascript:void(0)" class="a03">努比亚开学季</a><br>
+					   <a href="javascript:void(0)" class="a04">Z17 mini直降200</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i2">
+					   		<img src="image5/c4.png"/>
+					   </a>
+				       </div>
+				   </div>
+				   
+				 <div class="lunbobox1">
+					   <div class="smallimgPlay1" style="display: none;">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">生活家电开学季</a><br>
+					   <a href="javascript:void(0)" class="a02">2件9折 3件8.5折</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c5.png"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2" style="display: none;">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">美的好货预定</a><br>
+				   <a href="javascript:void(0)" class="a04">最高省700元</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c6.png"/></a>
+			       </div>
+			   </div>
+			   
+			   <div class="lunbobox1">
+					   <div class="smallimgPlay1" style="display: none;">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">买苹果送Beats</a><br>
+					   <a href="javascript:void(0)" class="a02">购机立减800园优惠</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c7.png"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2" style="display: none;">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">汽车用品</a><br>
+				   <a href="javascript:void(0)" class="a04">低至9.9元起</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c8.png"/></a>
+			       </div>
+			   </div>
+			   
+			   <div class="lunbobox1">
+					   <div class="smallimgPlay1" style="display: none;">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">开学放假</a><br>
+					   <a href="javascript:void(0)" class="a02">母婴好货满99减30元</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c9.png"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2" style="display: none;">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">海尔特惠日</a><br>
+				   <a href="javascript:void(0)" class="a04">最高送千元好礼</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c10.png"/></a>
+			       </div>
+			   </div>
+			   
+			   <div class="lunbobox1">
+					   <div class="smallimgPlay1" style="display: none;">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">雷氏爆款风暖浴霸</a><br>
+					   <a href="javascript:void(0)" class="a02">下单立减180元</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c11.jpg"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2" style="display: none;">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">TCL超级品牌日</a><br>
+				   <a href="javascript:void(0)" class="a04">定金49元最高低1049</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c12.png"/></a>
+			       </div>
+			   </div>
+			   
+			   <div class="lunbobox1">
+					   <div class="smallimgPlay1" style="display: none;">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">你开学 我放价</a><br>
+					   <a href="javascript:void(0)" class="a02">家具装备2件5折</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c13.png"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2" style="display: none;">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">惠普新近王牌</a><br>
+				   <a href="javascript:void(0)" class="a04">8代CPU超极本5699元</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c14.png"/></a>
+			       </div>
+			   </div>
+			   
+			   <div class="lunbobox1">
+					   <div class="smallimgPlay1">
+					   <p class="up1">
+					   <a href="javascript:void(0)" class="a01">你开学 我放价</a><br>
+					   <a href="javascript:void(0)" class="a02">精选图书买三减一</a>
+					   </p><br>
+					   <a href="javascript:void(0)" class="i1"><img src="image5/c15.png"/></a>
+					   </div>
+	   			</div>
+			   	<div class="lunbobox2">
+			       <div class="smallimgPlay2">
+				   <p class="up2">
+				   <a href="javascript:void(0)" class="a03">相机开学季</a><br>
+				   <a href="javascript:void(0)" class="a04">满1000减100</a>
+				   </p><br>
+				   <a href="javascript:void(0)" class="i2"><img src="image5/c16.png"/></a>
+			       </div>
+			   </div>
+				   
+			   </div>
+			   <div id="clickPlay" align="center">
+				   <!-- 上一张 -->
+				   <a href="javascript:void(0);" id="backImg"></a>
+				   <!-- 下一张 -->
+				   <a href="javascript:void(0);" id="nextImg"></a>
+			   </div>
+			   <!-- 点选切换 -->
+			   <div id="clickSel_div">
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+				   <a href="javascript:void(0);"></a>
+			   </div>
+		   </div>
+		   <div id="lunbo_right"><!-- 轮播图右侧内容-->
+			   <div id="r1"><!-- 轮播图右侧内容 上部-->
+				   <div id="r1_ph">
+					   <a href="javascript:void(0);"><img src="image5/QQ截图20170831092105.png"/></a>
+					   <span>Hi,你好</span>
+				   </div>
+				   
+				   <div id="r1_bt">
+					   <a href="login.html" id="r1_bt1">登录</a>
+					   <a href="javascript:void(0);" id="r1_bt2">新人有礼</a>
+				   </div>
+				   <div id="r1_enter">
+					   <a href="javascript:void(0);" id="r1_enter1">
+						   <em></em>
+						   <span>领云钻</span>
+						   <i>&gt;</i>
+					   </a>
+					   <a href="javascript:void(0);" id="r1_enter2">
+						   <em></em>
+						   <span>领券</span>
+						   <i>&gt;</i>
+					   </a>
+				   </div>
+		   	   </div>
+		   	   <div id="r2">
+		   	   <ul>
+			   	   <li>
+				   	   <a href="javascript:void(0);">
+					   	   <i>[必看]</i>
+					   	   "秋日出游，带一款拍照画质优秀的手机很有必要"
+				   	   </a>
+			   	   </li>
+			   	    <li>
+				   	   <a href="javascript:void(0);">
+					   	   <i>[关注]</i>
+					   	   "不趋同，手机党的2017年个性潮流之选"
+				   	   </a>
+			   	   </li>
+		   	   </ul>
+		   	   </div>
+		   	   <div id="kuaijie">
+			   	   <ul>
+				   	   <li>
+					   	   <a href="phone.html">
+						   	   <img src="image5/huafei.png"/>
+						   	   <p>话费</p>
+					   	   </a>
+				   	   </li>
+				   	   <li id="shuidian">
+					   	   <a href="javascript:void(0);">
+						   	   <img src="image5/shudianmei.png"/>
+						   	   <p>水电煤</p>
+					   	   </a>
+				   	   </li>
+				   	   <li style="border-right: 0">
+					   	   <a href="javascript:void(0);">
+						   	   <img src="image5/jiayouka.png"/>
+						   	   <p>加油卡</p>
+					   	   </a>
+				   	   </li>
+				   	   <li id="licai">
+					   	   <a href="javascript:void(0);">
+						   	   <img src="image5/licai.png"/>
+						   	   <p >理财</p>
+					   	   </a>
+				   	   </li>
+				   	   <li>
+					   	   <a href="javascript:void(0);" >
+					   	   	   <img src="image5/fenqi.png"/>
+						   	   <p>分期</p>
+					   	   </a>
+				   	   </li>
+				   	   <li style="border-right: 0" id="zuqiu">
+					   	   <a href="football.html">
+						   	   <img src="image5/zuqiu.png"/>
+						   	   <p>足球</p>
+					   	   </a>
+				   	   </li>
+			   	   </ul>
+		   	   </div>
+	  	</div>
+      </div>
+	   </div>
+	   <div id="downPage">
+	   <img src="image5/downPage.png"/>
+	   </div>
+	   
+	   <div id="fix_top" style="display: none;"><!-- 实现顶部框固定 -->
+	    <div id="fix_top_content">
+	    <div id="quanbusort"><!-- 实现顶部固定框中 全部商品 分类的内容 -->
+		    <div id="quanbusort1">
+		     <a href="javascript:void(0)" id="alls1">
+				   <i id="shop_logo1"></i>
+				   <span>全部商品分类</span>
+		     </a>
+		    </div>
+		    <div id="cn">
+			   <div id="allshopSort1">
+			   <div id="allshopSort_content1">
+				    <ul id="list1">
+					    <li class="hei33">
+							<i class="list_logo1"><img src="image5/telephone.png"/></i>
+							<a target="_blank" href="//shouji.suning.com/">手机</a><em>/</em>
+							<a target="_blank" href="https://yys.suning.com/">运营商</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/zhinengshuma.html">智能数码</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo2"><img src="image5/equipment.png"/></i>
+							<a target="_blank" href="//pindao.suning.com/city/kongtiao.html">空调</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/caidian.html">电视</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/bingxi.html">冰箱</a><em>/</em>
+							<a target="_blank" href="//pindao.suning.com/city/bingxi.html">洗衣机</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo3"><img src="image5/cookroom.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/chuwei.html">厨卫电器</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/xiaojiadian.html">生活家电</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/chuiju.html">厨具</a>
+						</li>
+						<li class="hei33">
+							<i class="list_logo4"><img src="image5/computer.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/diannao.html">电脑办公</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/shuma.htm">相机</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-20529-0.html">DIY</a>
+						</li>
+						<li>
+							<i class="list_logo5"><img src="image5/home.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/jujiajiafang.html">家居</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiajuguan.html">家具</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiancai.html">家装</a>
+						</li>
+						<li>
+							<i class="list_logo6"><img src="image5/food.png"/></i>
+							<a target="_blank"  href="//pindao.suning.com/city/shipinliangyou.html">食品</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/jiushuichongtiao.html">酒水</a><em>/</em>
+							<a target="_blank"  href="https://sxs.suning.com/sxspc_huadong.html">生鲜</a><em>/</em>
+						<a target="_blank"  href="https://china.suning.com/">特产</a>
+						</li>
+						<li>
+							<i class="list_logo7"><img src="image5/maquillage.png"/></i>
+							<a target="_blank"  href="https://binggo.suning.com/">个护化妆</a><em>/</em>
+							<a target="_blank"  href="//chaoshi.suning.com/">纸品清洁</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-500552-0.html">宠物</a>
+						</li>
+						<li>
+							<i class="list_logo8"><img src="image5/motherBaby.png"/></i>
+							<a target="_blank"  href="//redbaby.suning.com/">母婴</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/mywanju.html">玩具</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/tccpindaoye.html">车床</a><em>/</em>
+							<a target="_blank"  href="//redbaby.suning.com/tztxpdycqd.html">童装</a>
+						</li>
+						<li>
+							<i class="list_logo9"><img src="image5/sports.png"/></i>
+							<a target="_blank"  href="//sports.suning.com/">运动</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-420008-0.html">户外</a><em>/</em>
+							<a target="_blank"  href="https://snfc.suning.com/">足球</a><em>/</em>
+							<a target="_blank"  href="//list.suning.com/0-420029-0.html">骑行</a>
+						</li>
+						<li>
+							<i class="list_logo10"><img src="image5/clothing.png"/></i>
+							<a target="_blank"  href="//fashion.suning.com/">男装</a><em>/</em>
+							<a target="_blank"  href="//fashion.suning.com/">女装</a><em>/</em>
+							<a target="_blank"  href="//fashion.suning.com/">内衣</a>
+						</li>
+						<li>
+							<i class="list_logo11"><img src="image5/shoes(1).png"/></i>
+							<a target="_blank"  href="//fashion.suning.com/">鞋靴</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/xiangbao.html">箱包</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/zhongbiaoyanjing.html">钟表</a><em>/</em>
+							<a target="_blank"  href="//pindao.suning.com/city/zhubao.html">珠宝</a>
+						</li>
+						<li>
+							<i class="list_logo12"><img src="image5/car.png"/></i>
+							<a target="_blank"  href="https://car.suning.com/">汽车超市</a><em>/</em>
+							<a target="_blank"  href="https://car.suning.com/qichenew.html">汽车用品</a>
+						</li>
+						<li>
+							<i class="list_logo13"><img src="image5/book.png"/></i>
+							<a target="_blank" href="//book.suning.com/">图书</a><em>/</em>
+							<a target="_blank" href="//redbaby.suning.com/tongshu.html">童书</a><em>/</em>
+							<a target="_blank"  href="https://snbook.suning.com/web/index.htm">电子书</a>
+						</li>
+						<li>
+							<i class="list_logo14"><img src="image5/money.png"/></i>
+							<a target="_blank"  href="https://licai.suning.com/lcportal/licaiIndex.htm?channelCode=PC_YGMstation">理财</a><em>/</em>
+							<a target="_blank"  href="https://zc.suning.com/">众筹</a><em>/</em>
+							<a target="_blank"  href="https://fq.suning.com/">分期</a><em>/</em>
+							<a target="_blank"  href="https://issp.suning.com/">保险</a>
+						</li>
+				    </ul>
+			   </div>
+			   <div id="list_children1">
+			   <img src="image5/m1.png" width="999px" height="440px">
+			   <img src="image5/m2.png" width="999px" height="440px">
+			   <img src="image5/m3.png" width="999px" height="490px">
+			   <img src="image5/m4.png" width="999px" height="450px">
+			   <img src="image5/m5.png" width="999px" height="453px">
+			   <img src="image5/m6.png" width="999px" height="439px">
+			   <img src="image5/m7.png" width="999px" height="440px">
+			   <img src="image5/m8.png" width="999px" height="448px">
+			   <img src="image5/m9.png" width="999px" height="440px">
+			   <img src="image5/m10.png" width="999px" height="439px">
+			   <img src="image5/m11.png" width="999px" height="442px">
+			   <img src="image5/m12.png" width="999px" height="450px">
+			   <img src="image5/m13.png" width="999px" height="446px">
+			   <img src="image5/m14.png" width="999px" height="439px">
+			   </div>
+			</div>
+		</div>  
+	  </div>
+	  <div id="search4"><!-- 顶部固定搜索框整体 -->
+		   <div id="searchbox3">
+			   <form action="">
+			   <input type="text" id="search_text1" placeholder="开学季领800元代金券">
+			   <img src="image5/QQ截图20170829115442.png" id="sousuoph1"/>
+			   <input type="submit" value="搜索" id="search_button1">
+			   </form>
+		   </div>
+   	  </div>
+   	  <div id="fixdaohang">
+	   	  <div id="denglu">
+			    <a href="login.html" id="loginss">请登录</a>
+			    <a href="register.html" id="registerss" style="color:#f60;">
+			                    注册有礼
+			    	<b id="gift2"></b>
+			    </a>
+	      </div>
+   	  </div>
+   	  <div id="fixbox" class="blurBox2">
+		    <a href="javascript:void(0)"; style="color:#f60;">
+			    <img src="image4/QQ截图20170827144148.png" id="car1" width="16px"/>
+			     <span id="ddd">购物车0</span>
+			    <img src="image4/QQ截图20170827010245.png" id="downs"/>
+		    </a>
+		    <div id="fixHidden" style="display: none;">
+			    <i id="icon2"></i>
+			    <h5>不要让您的购物车空着哦，快去逛逛吧</h5>
+			    <div id="info2">
+			    <span>如果您已添加过宝贝，那就赶紧登录查看吧</span>
+			    <a href="login.html">登录</a>
+			    </div>
+		    </div>
+	  </div>
+	  </div>
+   </div>
+   </div>
+   
+   <div id="rightAbsolute"><!-- 侧边固定栏 -->
+	   <div id="rightAbsoluteom_first">
+	   		<div id="j1"></div><!-- 侧边固定栏第一个人头 -->
+		    <div id="rightAbsoluteom_first_one"><!-- 侧边固定栏购物车组 -->
+			    <i></i>
+			    <span class="shopCar">购物车</span>
+			    <span class="num">0</span>
+		    </div>
+		    <div id="rightAbsoluteom_first_two">
+		        <a href="javascript:void(0);">
+		        <i class="tip_one"></i>
+			    <span class="message" style="display: none;">消息</span>
+		        </a>
+		    </div>
+	    </div>
+	    <div id="rightAbsoluteom_second"><!-- 侧边固定栏理财组 -->
+		    <div id="l1"></div>
+		    <div id="l2"></div>
+		    <div id="l3"></div>
+	    </div>
+	    <div id="rightAbsoluteom_third"><!-- 侧边固定栏在线咨询组 -->
+		    <div id="v1"></div>
+		    <div id="v2"></div>
+		    <div id="v3"></div>
+		    <div id="v4"></div>
+	    </div>
+   </div>
+   
+   
+   </div> 
+  </body>
+</html>
